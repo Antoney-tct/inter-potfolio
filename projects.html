@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects · Antoney Ouko</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">antoney ouko</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">studio</a></li>
+                <li><a href="index.html#skills">craft</a></li>
+                <li><a href="projects.html" style="color: var(--terracotta);">work</a></li>
+                <li><a href="about.html">about</a></li>
+                <li><a href="index.html#contact">connect</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section style="padding-top: 150px;">
+        <div class="container">
+            <h1 style="margin-bottom: 20px;">all projects</h1>
+            <p style="max-width: 600px; margin-bottom: 60px;">A complete archive of my work in web development, design, and quality assurance.</p>
+            
+            <div class="work-grid" id="all-projects-grid">
+                <!-- Projects will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© 2026 antoney ouko — made with ◈ in nairobi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        const grid = document.getElementById('all-projects-grid');
+        
+        // Loop through all projects in data.js and create cards
+        for (const [id, project] of Object.entries(projectData)) {
+            const card = document.createElement('a');
+            card.href = `project.html?id=${id}`;
+            card.className = 'work-card-link';
+            
+            // Create tags HTML
+            const tagsHtml = project.technologies.slice(0, 3).map(t => 
+                `<span class="work-tag">${t}</span>`
+            ).join('');
+
+            card.innerHTML = `
+                <div class="work-card">
+                    <img src="${project.image}" alt="${project.title}" class="work-card-image" style="width:100%; height:240px; object-fit:cover;">
+                    <div class="work-content">
+                        <span class="work-category">${project.category}</span>
+                        <h3 style="margin-bottom: 10px;">${project.title}</h3>
+                        <p style="font-size: 0.95rem;">${project.description.substring(0, 80)}...</p>
+                        <div class="work-tags">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        }
+    </script>
+</body>
+</html>
