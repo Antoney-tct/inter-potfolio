@@ -26,11 +26,12 @@
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
-                <li><a href="#home">studio</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#skills">craft</a></li>
-                <li><a href="#work">work</a></li>
-                <li><a href="#studio">process</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">Story</a></li>
                 <li><a href="#contact">connect</a></li>
+                <li><a href="#contact" class="btn-hire-me">Hire Me</a></li>
                 <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
             </ul>
         </div>
@@ -240,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact-form" id="contactFormSection">
                     <h3 style="margin-bottom: 30px;">send a note</h3>
                     <!-- Replace YOUR_ACCESS_KEY_HERE with your actual key from Web3Forms -->
                     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
@@ -285,6 +286,8 @@
             </div>
         </div>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
     <footer>
         <div class="container">
@@ -585,6 +588,23 @@ education:
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     </script>
 
     <audio id="chatRingtone" preload="auto">

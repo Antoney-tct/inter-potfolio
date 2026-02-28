@@ -2,7 +2,7 @@ const projectData = {
     'ecommerce': {
         title: 'E-Commerce Platform',
         category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&auto=format',
+        image: 'image/image.png',
         description: 'A full-stack e-commerce website built from the ground up. Features include a product catalog, user authentication, a shopping cart, and a secure payment gateway. The backend includes a comprehensive admin dashboard for managing products, orders, and customers.',
         technologies: ['PHP', 'MySQL', 'JavaScript', 'Stripe API', 'HTML/CSS'],
         liveLink: '#',
@@ -23,7 +23,7 @@ const projectData = {
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format',
         description: 'Led the quality assurance phase for a large-scale mobile banking application. Developed and executed a comprehensive testing strategy that included manual testing, regression testing, and user acceptance testing (UAT). Identified and documented over 200 bugs, leading to a more stable and reliable final product.',
         technologies: ['Manual Testing', 'JIRA', 'Test Case Development', 'Bug Tracking', 'Regression Testing'],
-        liveLink: '#',
+        liveLink: 'https://instylekenya.co.ke/',
         githubLink: '#'
     }
     // Add more projects here easily!

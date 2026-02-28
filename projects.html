@@ -13,12 +13,20 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">antoney ouko</a>
-            <ul class="nav-menu">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
                 <li><a href="index.html#home">studio</a></li>
                 <li><a href="index.html#skills">craft</a></li>
-                <li><a href="projects.html" style="color: var(--terracotta);">work</a></li>
+                <li><a href="projects.html" style="color: var(--terracotta);">Projects</a></li>
                 <li><a href="about.html">about</a></li>
                 <li><a href="index.html#contact">connect</a></li>
+                <li><a href="index.html#contact" class="btn-hire-me">Hire Me</a></li>
+                <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
             </ul>
         </div>
     </header>
@@ -41,6 +49,8 @@
             </div>
         </div>
     </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
     <script src="data.js"></script>
     <script>
@@ -71,6 +81,60 @@
                 </div>
             `;
             grid.appendChild(card);
+        }
+
+        // Mobile menu logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navClose = document.getElementById('navClose');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check local storage
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
     </script>
 </body>
