@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antoney Ouko · studio</title>
     
-    <!-- Completely different font stack: serif + mono -->
+    <!-- My font stack: serif + mono -->
     <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css"> <!-- Adobe Fonts: Freight Text & Graphik -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
     
@@ -29,7 +29,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">craft</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">Story</a></li>
+                <li><a href="about.html">My Story</a></li>
                 <li><a href="#contact">connect</a></li>
                 <li><a href="#contact" class="btn-hire-me">Hire Me</a></li>
                 <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
@@ -465,9 +465,9 @@ education:
         const chatInput = document.getElementById('chatInput');
         const chatMessages = document.getElementById('chatMessages');
 
-        // Rule-based responses. No API needed.
+        // My chartbot Rule-based(they are based on if else statements) responses.
         const responses = {
-            greeting: "Hello! I'm Studio Bot. You can ask me about Antoney's skills, work, or how to get in touch.",
+            greeting: "Hello! Bot Toney here!. You can ask me about Antoney's skills, work, or how to get in touch.",
             skills: "Antoney specializes in web development (PHP, MySQL, JS), UI/UX design using Figma, and Quality Assurance (QA) testing.",
             work: "You can see his selected work just above this section! He has built e-commerce platforms, designed brand identities, and created testing frameworks.",
             process: "He believes in crafting digital experiences with warmth and a human touch. His process involves understanding the user, clean design, and robust testing.",
@@ -478,7 +478,7 @@ education:
             tools: "His tech stack includes HTML, CSS, JavaScript, PHP, MySQL, Figma, and Adobe Creative Suite.",
             social: "You can connect with him on LinkedIn, GitHub, and Instagram. Links are in the footer!",
             joke: "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-            default: "That's a great question! I'm not sure about that one. Try asking about 'skills', 'work', 'process', or 'contact'."
+            default: "That's a great question! I'm not sure about that one. How about if you try asking about 'skills', 'work', 'process', or 'contact'."
         };
 
         function getResponse(input) {
