@@ -24,6 +24,7 @@
                 <li><a href="index.html#skills">craft</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="about.html" style="color: var(--terracotta);">My story</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="index.html#contact">connect</a></li>
                 <li><a href="index.html#contact" class="btn-hire-me">Hire Me</a></li>
                 <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
@@ -31,7 +32,7 @@
         </div>
     </header>
 
-    <section style="padding-top: 150px;">
+    <section class="project-detail-section">
         <div class="container">
             <div class="hero-grid">
                 <div>
@@ -40,39 +41,39 @@
                     <div class="hero-text">
                         I am a Business IT specialist based in Nairobi, Kenya. My journey began with a curiosity about how things work, which evolved into a passion for ensuring they work <em>perfectly</em>.
                     </div>
-                    <p style="margin-bottom: 20px;">
+                    <p class="mb-20">
                         Today, I bridge the gap between technical complexity and human experience. Whether I'm writing PHP code, designing a UI in Figma, or running rigorous QA tests, my goal is always the same: to create digital products that feel reliable and welcoming.
                     </p>
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format" alt="Workspace" style="width: 100%; border-radius: 20px; margin-top: 30px;">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format" alt="Workspace" class="content-image">
                 </div>
                 
-                <div style="background: var(--paper); padding: 40px; border-radius: 20px;">
-                    <h3 style="margin-bottom: 30px;">Timeline</h3>
+                <div class="about-sidebar">
+                    <h3 class="mb-30">Timeline</h3>
                     
-                    <div style="border-left: 2px dashed var(--terracotta); padding-left: 30px; margin-left: 10px;">
-                        <div style="position: relative; margin-bottom: 40px;">
-                            <div style="position: absolute; left: -36px; top: 5px; width: 12px; height: 12px; background: var(--terracotta); border-radius: 50%;"></div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background-color: var(--terracotta)"></div>
                             <span class="mono">2025 — Present</span>
                             <h4>QA Tester</h4>
                             <p style="font-size: 0.9rem;">Kiwami Tech Solutions. Ensuring software quality through manual and automated testing.</p>
                         </div>
 
-                        <div style="position: relative; margin-bottom: 40px;">
-                            <div style="position: absolute; left: -36px; top: 5px; width: 12px; height: 12px; background: var(--sage); border-radius: 50%;"></div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background-color: var(--sage)"></div>
                             <span class="mono">2024 — 2025</span>
                             <h4>PR Officer</h4>
                             <p style="font-size: 0.9rem;">Ajira Digital Program. Managed communications and digital outreach.</p>
                         </div>
 
-                        <div style="position: relative; margin-bottom: 40px;">
-                            <div style="position: absolute; left: -36px; top: 5px; width: 12px; height: 12px; background: var(--clay); border-radius: 50%;"></div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background-color: var(--clay)"></div>
                             <span class="mono">2024</span>
                             <h4>Diploma in Business IT</h4>
                             <p style="font-size: 0.9rem;">Graduated from Zetech University with distinction.</p>
                         </div>
                     </div>
 
-                    <h3 style="margin: 30px 0 20px;">Certifications</h3>
+                    <h3 class="certifications-title">Certifications</h3>
                     <ul class="skill-list">
                         <li>Cisco Networking Essentials</li>
                         <li>Ajira Digital Online Work</li>
@@ -84,9 +85,9 @@
     </section>
 
     <section class="studio">
-        <div class="container" style="text-align: center;">
+        <div class="container text-center">
             <h2>ready to work together?</h2>
-            <p style="max-width: 600px; margin: 0 auto 40px;">I am currently available for freelance projects and full-time roles in web development and QA.</p>
+            <p class="page-subtitle">I am currently available for freelance projects and full-time roles in web development and QA.</p>
             <a href="index.html#contactFormSection" class="btn btn-primary">start a conversation</a>
         </div>
     </section>
@@ -94,7 +95,7 @@
     <footer>
         <div class="container">
             <div class="copyright">
-                <p>© 2026 antoney ouko — made with ◈ in nairobi</p>
+                <p>© <span id="copyright-year">2024</span> antoney ouko — made with ◈ in nairobi</p>
             </div>
         </div>
     </footer>
@@ -102,6 +103,7 @@
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
     <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
         // Mobile menu logic
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');

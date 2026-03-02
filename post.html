@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post · Antoney Ouko</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">antoney ouko</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#skills">craft</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">My story</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">connect</a></li>
+                <li><a href="index.html#contact" class="btn-hire-me">Hire Me</a></li>
+                <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="post-container">
+        <!-- Post content will be injected here -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© <span id="copyright-year">2024</span> antoney ouko — made with ◈ in nairobi</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="blog-data.js"></script>
+    <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        const postContainer = document.getElementById('post-container');
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        const post = blogPosts[postId];
+
+        if (post) {
+            document.title = `${post.title} · Antoney Ouko`;
+            postContainer.innerHTML = `
+                <section class="project-detail-section">
+                    <div class="container">
+                        <div class="project-header">
+                            <span class="hero-tag">${post.date} · ${post.author}</span>
+                            <h1 class="project-title-large">${post.title}</h1>
+                        </div>
+                        <img src="${post.image}" alt="${post.title}" class="project-main-image">
+                        <div class="project-body-grid">
+                            <div class="project-description-block post-content-body">
+                                ${post.content}
+                            </div>
+                            <div class="project-meta-block">
+                                <h3>Recent Posts</h3>
+                                <ul class="skill-list" id="recent-posts-sidebar">
+                                    <!-- Recent posts will be injected here -->
+                                </ul>
+                                <a href="blog.html" class="btn btn-secondary" style="margin-top: 20px; width: 100%; justify-content: center;">View All Posts</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            // Populate recent posts in sidebar
+            const recentPostsSidebar = document.getElementById('recent-posts-sidebar');
+            Object.entries(blogPosts).slice(0, 3).forEach(([id, p]) => {
+                if (id !== postId) { // Don't show the current post in the recent list
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="post.html?id=${id}" style="text-decoration:none; color:inherit;">${p.title}</a>`;
+                    recentPostsSidebar.appendChild(li);
+                }
+            });
+
+        } else {
+            postContainer.innerHTML = '<section style="padding: 150px 0; text-align: center;"><div class="container"><h1>Post not found</h1><p>Sorry, we couldn\'t find the post you were looking for.</p><a href="blog.html" class="btn btn-primary">Back to Blog</a></div></section>';
+        }
+
+        // Shared JS for menu, theme, back-to-top
+        const menuToggle = document.getElementById('menuToggle'); const navMenu = document.getElementById('navMenu'); const navClose = document.getElementById('navClose'); if (menuToggle) { menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); menuToggle.classList.toggle('active'); }); } if (navClose) { navClose.addEventListener('click', () => { navMenu.classList.remove('active'); menuToggle.classList.remove('active'); }); }
+        const themeToggle = document.getElementById('themeToggle'); const body = document.body; const icon = themeToggle.querySelector('i'); if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); icon.classList.replace('fa-moon', 'fa-sun'); } themeToggle.addEventListener('click', () => { body.classList.toggle('dark-mode'); const isDark = body.classList.contains('dark-mode'); localStorage.setItem('theme', isDark ? 'dark' : 'light'); icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon'; });
+        const backToTop = document.getElementById('backToTop'); if (backToTop) { window.addEventListener('scroll', () => { window.scrollY > 300 ? backToTop.classList.add('visible') : backToTop.classList.remove('visible'); }); backToTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+    </script>
+</body>
+</html>

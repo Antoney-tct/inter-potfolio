@@ -19,20 +19,23 @@
     <header>
         <div class="container header-content">
             <a href="#" class="logo">antoney ouko</a>
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" role="button" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
+                <li class="nav-close-btn" id="navClose" role="button" aria-label="Close navigation menu"><i class="fas fa-times"></i></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">craft</a></li>
+                <li><a href="#services">services</a></li>
+                <li><a href="#testimonials">testimonials</a></li>
                 <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">My Story</a></li>
                 <li><a href="#contact">connect</a></li>
                 <li><a href="#contact" class="btn-hire-me">Hire Me</a></li>
-                <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
+                <li><button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button></li>
             </ul>
         </div>
     </header>
@@ -64,89 +67,131 @@
         <div class="container">
             <h2>craft & process</h2>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>web development</h3>
-                    <p>building thoughtful, responsive sites with clean code.</p>
-                    <ul class="skill-list">
-                        <li>HTML / CSS / JavaScript</li>
-                        <li>PHP / MySQL</li>
-                        <li>responsive architecture</li>
+                <a href="projects.html?filter=Web Development" class="skill-card-link">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <h3>web development</h3>
+                        <p>building thoughtful, responsive sites with clean code.</p>
+                        <ul class="skill-list">
+                            <li>HTML / CSS / JavaScript</li>
+                            <li>PHP / MySQL</li>
+                            <li>responsive architecture</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="projects.html?filter=Design" class="skill-card-link">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-pen"></i></div>
+                        <h3>ui/ux & design</h3>
+                        <p>creating interfaces that feel intuitive and warm.</p>
+                        <ul class="skill-list">
+                            <li>figma prototyping</li>
+                            <li>adobe creative suite</li>
+                            <li>brand identity</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="projects.html?filter=Quality Assurance" class="skill-card-link">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-bug"></i></div>
+                        <h3>qa & consulting</h3>
+                        <p>ensuring digital products work beautifully.</p>
+                        <ul class="skill-list">
+                            <li>manual testing</li>
+                            <li>cisco networking</li>
+                            <li>technical documentation</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>services & pricing</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Website Package</h3>
+                    <p>Ideal for individuals and small businesses needing a professional online presence.</p>
+                    <span class="service-price">starts at $800</span>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 3-5 Page Responsive Website</li>
+                        <li><i class="fas fa-check"></i> Custom UI/UX Design</li>
+                        <li><i class="fas fa-check"></i> Contact Form Integration</li>
+                        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fas fa-check"></i> 1 Month of Support</li>
                     </ul>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-pen"></i></div>
-                    <h3>ui/ux & design</h3>
-                    <p>creating interfaces that feel intuitive and warm.</p>
-                    <ul class="skill-list">
-                        <li>figma prototyping</li>
-                        <li>adobe creative suite</li>
-                        <li>brand identity</li>
+                <div class="service-card">
+                    <h3>E-Commerce Solution</h3>
+                    <p>A complete solution for businesses looking to sell products online effectively.</p>
+                    <span class="service-price">starts at $2,000</span>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Full E-Commerce Store</li>
+                        <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
+                        <li><i class="fas fa-check"></i> Product & Inventory System</li>
+                        <li><i class="fas fa-check"></i> Admin Management Dashboard</li>
+                        <li><i class="fas fa-check"></i> 3 Months of Support</li>
                     </ul>
+                    <a href="#contact" class="btn btn-primary">Start Selling</a>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-bug"></i></div>
-                    <h3>qa & consulting</h3>
-                    <p>ensuring digital products work beautifully.</p>
-                    <ul class="skill-list">
-                        <li>manual testing</li>
-                        <li>cisco networking</li>
-                        <li>technical documentation</li>
+                <div class="service-card">
+                    <h3>QA & Consulting</h3>
+                    <p>Ensure your digital product is robust, bug-free, and ready for your users.</p>
+                    <span class="service-price">custom quote</span>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Comprehensive Test Plan</li>
+                        <li><i class="fas fa-check"></i> Manual & Regression Testing</li>
+                        <li><i class="fas fa-check"></i> Detailed Bug Reporting</li>
+                        <li><i class="fas fa-check"></i> Performance Analysis</li>
+                        <li><i class="fas fa-check"></i> IT Process Consultation</li>
                     </ul>
+                    <a href="#contact" class="btn btn-secondary">Inquire Now</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>what clients say</h2>
+            <div class="testimonial-grid" id="testimonialGrid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Antoney transformed our online presence. His attention to detail and commitment to quality are second to none. The final product was not just functional, but beautiful."</p>
+                    <div class="testimonial-author">jane doe, ceo of artisco</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The QA process was incredibly thorough. Antoney found critical bugs we had missed for months and helped us establish a better testing framework for the future."</p>
+                    <div class="testimonial-author">john smith, project manager</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"From the initial branding concepts to the final website, the process was seamless. Antoney has a unique ability to blend technical skill with a strong design sense."</p>
+                    <div class="testimonial-author">emily white, startup founder</div>
+                </div>
+            </div>
+            <div class="testimonial-nav" id="testimonialNav">
+                <!-- Dots will be generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-preview" id="blog">
+        <div class="container">
+            <h2>from the journal</h2>
+            <div class="blog-grid" id="recent-posts-grid">
+                <!-- Recent blog posts will be injected here -->
+            </div>
+            <div style="text-align: center; margin-top: 40px;"><a href="blog.html" class="btn btn-secondary">view all posts</a></div>
         </div>
     </section>
 
     <section class="work" id="work">
         <div class="container">
             <h2>selected work</h2>
-            <div class="work-grid">
-                <a href="project.html?id=ecommerce" class="work-card-link">
-                    <div class="work-card">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format" alt="e-commerce project" class="work-image">
-                        <div class="work-content">
-                            <span class="work-category">web development</span>
-                            <h3 style="margin-bottom: 10px;">e-commerce platform</h3>
-                            <p style="font-size: 0.95rem;">full-stack with payment integration and admin dashboard.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">php</span>
-                                <span class="work-tag">mysql</span>
-                                <span class="work-tag">javascript</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="project.html?id=branding" class="work-card-link">
-                    <div class="work-card">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format" alt="brand identity" class="work-image">
-                        <div class="work-content">
-                            <span class="work-category">design</span>
-                            <h3 style="margin-bottom: 10px;">brand identity suite</h3>
-                            <p style="font-size: 0.95rem;">logos, stationery, and digital assets for local business.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">photoshop</span>
-                                <span class="work-tag">illustrator</span>
-                                <span class="work-tag">branding</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="project.html?id=qa" class="work-card-link">
-                    <div class="work-card">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format" alt="qa testing" class="work-image">
-                        <div class="work-content">
-                            <span class="work-category">qa</span>
-                            <h3 style="margin-bottom: 10px;">testing framework</h3>
-                            <p style="font-size: 0.95rem;">comprehensive QA for e-commerce platforms.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">manual testing</span>
-                                <span class="work-tag">regression</span>
-                                <span class="work-tag">bug tracking</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+            <div class="work-grid" id="featured-work-grid">
+                <!-- Featured projects will be injected here by JavaScript -->
             </div>
         </div>
     </section>
@@ -269,20 +314,20 @@
 
     <div class="chat-bubble">
         <button class="chat-toggle" id="chatToggle">
-            <i class="fas fa-comment"></i>
+            <i class="fas fa-comment" aria-hidden="true"></i>
         </button>
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
                 <h4>ask me anything</h4>
-                <button style="background: none; border: none; font-size: 1.2rem; cursor: pointer;" id="closeChat">✕</button>
+                <button style="background: none; border: none; font-size: 1.2rem; cursor: pointer;" id="closeChat" aria-label="Close chat">✕</button>
             </div>
             <div class="chat-messages" id="chatMessages">
-                <div class="message bot">hi! ask me about antoney's work, skills, or process :)</div>
+                <div class="message bot">Hi! I'm Bot Toney. Ask me anything about Antoney!</div>
             </div>
 
             <div class="chat-input">
                 <input type="text" id="chatInput" placeholder="type here...">
-                <button class="chat-send" id="sendChat"><i class="fas fa-paper-plane"></i></button>
+                <button class="chat-send" id="sendChat" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -296,20 +341,23 @@
                     <h3 class="footer-title">antoney ouko</h3>
                     <p style="color: var(--warm-gray);">business it specialist · web · design · qa</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/antoney-ouko-91b220369" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Antoney-tct" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/254768343558" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.tiktok.com/@antoney62" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/antoneytct?igsh=amxya2o3NmZsdXY0" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/antoney-ouko-91b220369" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Antoney-tct" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://wa.me/254768343558" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@antoney62" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/antoneytct?igsh=amxya2o3NmZsdXY0" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div>
                     <h3 class="footer-title">explore</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">studio</a></li>
-                        <li><a href="#skills">craft</a></li>
-                        <li><a href="#work">work</a></li>
-                        <li><a href="#studio">process</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#skills">Craft</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">My Story</a></li>
                     </ul>
                 </div>
                 <div>
@@ -322,12 +370,15 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2026 antoney ouko — made with ◈ in nairobi</p>
+                <p>© <span id="copyright-year">2024</span> antoney ouko — made with ◈ in nairobi</p>
             </div>
         </div>
     </footer>
 
+    <script src="blog-data.js"></script>
+    <script src="data.js"></script>
     <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -386,6 +437,58 @@
                 }
             });
         });
+
+        // Load featured work
+        const featuredGrid = document.getElementById('featured-work-grid');
+        if (featuredGrid && typeof projectData !== 'undefined') {
+            // Get the first 3 projects from data.js
+            const featuredProjects = Object.entries(projectData).slice(0, 3);
+
+            featuredProjects.forEach(([id, project]) => {
+                const cardLink = document.createElement('a');
+                cardLink.href = `project.html?id=${id}`;
+                cardLink.className = 'work-card-link';
+
+                const tagsHtml = project.technologies.slice(0, 3).map(t => `<span class="work-tag">${t}</span>`).join('');
+
+                cardLink.innerHTML = `
+                    <div class="work-card">
+                        <img src="${project.image}" alt="${project.title}" class="work-image">
+                        <div class="work-content">
+                            <span class="work-category">${project.category}</span>
+                            <h3 style="margin-bottom: 10px;">${project.title}</h3>
+                            <p style="font-size: 0.95rem;">${project.description.substring(0, 80)}...</p>
+                            <div class="work-tags">${tagsHtml}</div>
+                        </div>
+                    </div>`;
+                featuredGrid.appendChild(cardLink);
+            });
+        }
+
+        // Load recent blog posts
+        const recentPostsGrid = document.getElementById('recent-posts-grid');
+        if (recentPostsGrid && typeof blogPosts !== 'undefined') {
+            const recentPosts = Object.entries(blogPosts).slice(0, 2); // Get first 2 posts
+
+            recentPosts.forEach(([id, post]) => {
+                const cardLink = document.createElement('a');
+                cardLink.href = `post.html?id=${id}`;
+                cardLink.className = 'post-card-link';
+
+                cardLink.innerHTML = `
+                    <div class="post-card">
+                        <img src="${post.image}" alt="${post.title}" class="post-image">
+                        <div class="post-content">
+                            <span class="post-meta">${post.date} · ${post.author}</span>
+                            <h3 class="post-title">${post.title}</h3>
+                            <p class="post-excerpt">${post.excerpt}</p>
+                            <span class="post-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                `;
+                recentPostsGrid.appendChild(cardLink);
+            });
+        }
 
         // Download CV
         document.getElementById('downloadCV').addEventListener('click', () => {
@@ -464,10 +567,11 @@ education:
         const sendChat = document.getElementById('sendChat');
         const chatInput = document.getElementById('chatInput');
         const chatMessages = document.getElementById('chatMessages');
+        let userName = localStorage.getItem('userName');
+        let isWaitingForName = false;
 
         // My chartbot Rule-based(they are based on if else statements) responses.
         const responses = {
-            greeting: "Hello! Bot Toney here!. You can ask me about Antoney's skills, work, or how to get in touch.",
             skills: "Antoney specializes in web development (PHP, MySQL, JS), UI/UX design using Figma, and Quality Assurance (QA) testing.",
             work: "You can see his selected work just above this section! He has built e-commerce platforms, designed brand identities, and created testing frameworks.",
             process: "He believes in crafting digital experiences with warmth and a human touch. His process involves understanding the user, clean design, and robust testing.",
@@ -478,40 +582,80 @@ education:
             tools: "His tech stack includes HTML, CSS, JavaScript, PHP, MySQL, Figma, and Adobe Creative Suite.",
             social: "You can connect with him on LinkedIn, GitHub, and Instagram. Links are in the footer!",
             joke: "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-            default: "That's a great question! I'm not sure about that one. How about if you try asking about 'skills', 'work', 'process', or 'contact'."
+            default: "That's a great question! I'm not sure about that one. How about trying to ask about 'skills', 'work', 'process', or 'contact'?"
         };
 
+        // Update initial bot message if name is known
+        const initialBotMessage = document.querySelector('.message.bot');
+        if (userName) {
+            initialBotMessage.textContent = `Welcome back, ${userName}! Ask me about Antoney's work, skills, or process :)`;
+        } else {
+            initialBotMessage.textContent = "Hi! I'm Bot Toney. You can ask me about Antoney, or tell me your name to make this more personal!";
+        }
+
         function getResponse(input) {
-            input = input.toLowerCase();
-            if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-                return responses.greeting;
+            const lowerInput = input.toLowerCase();
+
+            // 1. If we just asked for the name, the next message is the name.
+            if (isWaitingForName) {
+                userName = input.trim().split(' ')[0]; // Take the first word
+                userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
+                localStorage.setItem('userName', userName);
+                isWaitingForName = false;
+                return `Nice to meet you, ${userName}! How can I help you today?`;
             }
-            if (input.includes('skill') || input.includes('craft')) {
-                return responses.skills;
+
+            // 2. Allow user to set/change their name at any time.
+            const nameTriggers = ['my name is', 'call me'];
+            for (const trigger of nameTriggers) {
+                if (lowerInput.startsWith(trigger)) {
+                    let potentialName = input.substring(trigger.length).trim();
+                    if (potentialName) {
+                        userName = potentialName.split(' ')[0];
+                        userName = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
+                        localStorage.setItem('userName', userName);
+                        return `Got it, I'll call you ${userName}! What can I do for you?`;
+                    }
+                }
             }
-            if (input.includes('work') || input.includes('project')) {
-                return responses.work;
+            
+            // 3. Handle greetings
+            if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('hey')) {
+                const hour = new Date().getHours();
+                let timeOfDayGreeting;
+                if (hour >= 5 && hour < 12) timeOfDayGreeting = "Good morning";
+                else if (hour >= 12 && hour < 18) timeOfDayGreeting = "Good afternoon";
+                else timeOfDayGreeting = "Good evening";
+
+                if (userName) {
+                    return `${timeOfDayGreeting}, ${userName}! How can I help?`;
+                } else {
+                    isWaitingForName = true;
+                    return `${timeOfDayGreeting}! I'm Bot Toney. I don't believe we've met, what's your name?`;
+                }
             }
-            if (input.includes('process') || input.includes('studio')) {
-                return responses.process;
+
+            // Ask for time
+            if (lowerInput.includes('time')) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { timeZone: 'Africa/Nairobi', hour: '2-digit', minute: '2-digit' });
+                return `The current time here in Nairobi is ${timeString}. Is there anything else I can help with?`;
             }
-            if (input.includes('who are you') || input.includes('about')) {
-                return responses.about;
-            }
-            if (input.includes('location') || input.includes('where') || input.includes('based')) {
-                return responses.location;
-            }
-            if (input.includes('education') || input.includes('study') || input.includes('degree') || input.includes('school')) {
-                return responses.education;
-            }
-            if (input.includes('tool') || input.includes('tech') || input.includes('stack') || input.includes('software')) {
-                return responses.tools;
-            }
-            if (input.includes('social') || input.includes('linkedin') || input.includes('github') || input.includes('instagram')) {
-                return responses.social;
-            }
-            if (input.includes('joke') || input.includes('funny')) {
-                return responses.joke;
+
+            if (lowerInput.includes('skill') || lowerInput.includes('craft')) return responses.skills;
+            if (lowerInput.includes('work') || lowerInput.includes('project')) return responses.work;
+            if (lowerInput.includes('process') || lowerInput.includes('studio')) return responses.process;
+            if (lowerInput.includes('contact')) return responses.contact;
+            if (lowerInput.includes('who are you') || lowerInput.includes('about')) return responses.about;
+            if (lowerInput.includes('location') || lowerInput.includes('where') || lowerInput.includes('based')) return responses.location;
+            if (lowerInput.includes('education') || lowerInput.includes('study') || lowerInput.includes('degree') || lowerInput.includes('school')) return responses.education;
+            if (lowerInput.includes('tool') || lowerInput.includes('tech') || lowerInput.includes('stack') || lowerInput.includes('software')) return responses.tools;
+            if (lowerInput.includes('social') || lowerInput.includes('linkedin') || lowerInput.includes('github') || lowerInput.includes('instagram')) return responses.social;
+            if (lowerInput.includes('joke') || lowerInput.includes('funny')) return responses.joke;
+
+            // Personalize default response
+            if (userName) {
+                return `That's a good question, ${userName}. I'm not sure about that one. Try asking about 'skills', 'work', or 'contact'.`;
             }
             return responses.default;
         }
@@ -524,33 +668,39 @@ education:
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-    function showTypingIndicator() {
-        const div = document.createElement('div');
-        div.className = 'message bot';
-        div.id = 'typingIndicator';
-        div.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
-        chatMessages.appendChild(div);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+        function showTypingIndicator() {
+            const div = document.createElement('div');
+            div.className = 'message bot'; // Use bot style for consistency
+            div.id = 'typingIndicator';
+            div.innerHTML = `<div class="typing-animation">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                             </div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-    function removeTypingIndicator() {
-        const indicator = document.getElementById('typingIndicator');
-        if (indicator) indicator.remove();
-    }
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
 
         // Audio element for the ringtone
         const ringtone = new Audio('sound/universfield-new-notification-022-370046.mp3');
+        const sentSound = new Audio('sound/pop.mp3'); // Make sure to add a 'pop.mp3' to your sound folder
 
         const handleSendChat = () => {
             const msg = chatInput.value.trim();
             if (msg) {
+                sentSound.play().catch(error => console.log('Audio playback failed:', error));
                 addMessage(msg, true);
                 chatInput.value = '';
-            showTypingIndicator();
+                showTypingIndicator();
                 // Simulate thinking and then get the response
                 setTimeout(() => {
-                removeTypingIndicator();
                     const reply = getResponse(msg);
+                    removeTypingIndicator();
                     addMessage(reply, false);
                     ringtone.play(); // Play the ringtone after the reply
             }, 1500);
@@ -582,7 +732,7 @@ education:
             });
         });
 
-        document.querySelectorAll('.skill-card, .work-card, .hand-drawn-card, .contact-item').forEach(el => {
+        document.querySelectorAll('.skill-card, .work-card, .hand-drawn-card, .contact-item, .testimonial-card, .post-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -607,10 +757,53 @@ education:
         }
     </script>
 
-    <audio id="chatRingtone" preload="auto">
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+    <script>
+        // Testimonial Carousel (for mobile)
+        const testimonialGrid = document.getElementById('testimonialGrid');
+        const testimonialNav = document.getElementById('testimonialNav');
+        
+        if (testimonialGrid && testimonialNav) {
+            const testimonialCards = testimonialGrid.querySelectorAll('.testimonial-card');
+            
+            if (testimonialCards.length > 0) {
+                // 1. Create dots
+                testimonialCards.forEach((card, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('testimonial-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+                    dot.addEventListener('click', () => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    });
+                    testimonialNav.appendChild(dot);
+                });
+
+                // 2. Update dots on scroll
+                const dots = testimonialNav.querySelectorAll('.testimonial-dot');
+                const updateDotsOnScroll = () => {
+                    const scrollLeft = testimonialGrid.scrollLeft;
+                    const gridWidth = testimonialGrid.clientWidth;
+                    
+                    let activeIndex = 0;
+                    // Find which card is closest to the center of the viewport
+                    let minDistance = Infinity;
+                    testimonialCards.forEach((card, index) => {
+                        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                        const viewportCenter = scrollLeft + gridWidth / 2;
+                        const distance = Math.abs(cardCenter - viewportCenter);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            activeIndex = index;
+                        }
+                    });
+
+                    dots.forEach((dot, index) => dot.classList.toggle('active', index === activeIndex));
+                };
+
+                testimonialGrid.addEventListener('scroll', updateDotsOnScroll);
+            }
+        }
+    </script>
 
 </body>
 </html>
