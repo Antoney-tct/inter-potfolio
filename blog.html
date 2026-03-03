@@ -46,20 +46,19 @@
     <footer>
         <div class="container">
             <div class="copyright">
-                <p>© <span id="copyright-year">2024</span> antoney ouko — made with ◈ in nairobi</p>
+                <p>© <span id="copyright-year"></span> antoney ouko — made with ◈ in nairobi</p>
             </div>
         </div>
     </footer>
 
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
+    <script src="main.js" defer></script>
     <script src="blog-data.js"></script>
     <script>
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        
         const grid = document.getElementById('blog-grid');
         
-        // Loop through all posts in blog-data.js and create cards
+        // Loop through all posts and create cards
         for (const [id, post] of Object.entries(blogPosts)) {
             const card = document.createElement('a');
             card.href = `post.html?id=${id}`;
@@ -77,30 +76,6 @@
                 </div>
             `;
             grid.appendChild(card);
-        }
-
-        // Shared JS for menu, theme, back-to-top
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navClose = document.getElementById('navClose');
-        if (menuToggle) { menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); menuToggle.classList.toggle('active'); }); }
-        if (navClose) { navClose.addEventListener('click', () => { navMenu.classList.remove('active'); menuToggle.classList.remove('active'); }); }
-
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-        if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); icon.classList.replace('fa-moon', 'fa-sun'); }
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-
-        const backToTop = document.getElementById('backToTop');
-        if (backToTop) {
-            window.addEventListener('scroll', () => { window.scrollY > 300 ? backToTop.classList.add('visible') : backToTop.classList.remove('visible'); });
-            backToTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
         }
     </script>
 </body>

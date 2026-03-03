@@ -442,7 +442,7 @@
             display: block;
         }
 
-        /* ===== WORK ===== */
+        /* Work/tasks part */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -512,7 +512,7 @@
             color: var(--clay);
         }
 
-        /* ===== PROJECT DETAIL PAGE ===== */
+        /* My projects*/
         .project-detail-section {
             padding: 150px 0 100px;
         }
@@ -598,7 +598,7 @@
             align-self: start; /* Stick to top */
         }
 
-        /* Styles for about.html refactor */
+        /* Styles for my about.html  */
         .page-subtitle {
             max-width: 600px;
             margin: 0 auto 40px;
@@ -624,7 +624,7 @@
         }
         .timeline-dot {
             position: absolute;
-            left: -37px; /* (12/2) + 30 + 1 */
+            left: -37px; 
             top: 5px;
             width: 12px;
             height: 12px;
@@ -642,7 +642,7 @@
             margin-bottom: 15px;
         }
 
-        /* ===== STUDIO SECTION (HIRE) ===== */
+        /* Hire me section */
         .studio {
             background: var(--paper);
         }
@@ -765,7 +765,7 @@
             color: var(--sage);
         }
 
-        /* ===== SERVICES ===== */
+        /* My sservices part */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -819,7 +819,7 @@
             margin-top: 5px;
         }
 
-        /* ===== TESTIMONIALS ===== */
+        /* My testimonial section*/
         .testimonials {
             background: var(--paper);
         }
@@ -864,7 +864,34 @@
             background: var(--border-soft);
         }
 
-        /* ===== BLOG ===== */
+        .testimonial-arrows {
+            display: none; /* Hidden on desktop */
+        }
+
+        .testimonial-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            color: var(--warm-gray);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+        .testimonial-arrow:hover {
+            background: var(--terracotta);
+            color: white;
+            border-color: var(--terracotta);
+        }
+        #testimonialPrev { left: -5px; }
+        #testimonialNext { right: -5px; }
+
+        /* My blog part */
         .blog-preview {
             background: var(--paper);
         }
@@ -927,7 +954,7 @@
         }
 
         .testimonial-nav {
-            display: none; /* Hidden on desktop */
+            display: none; /* my tetimony buttons arrows are hidden on desktop */
             text-align: center;
             margin-top: 30px;
         }
@@ -949,7 +976,7 @@
             transform: scale(1.2);
         }
 
-        /* ===== CONTACT ===== */
+        /* My contact section */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1195,7 +1222,7 @@
             cursor: pointer;
         }
 
-        /* ===== FOOTER ===== */
+        /*My footer section */
         footer {
             padding: 60px 0 30px;
             background: var(--paper);
@@ -1237,7 +1264,7 @@
             border-bottom-color: currentColor;
         }
 
-        /* ===== BACK TO TOP ===== */
+        /*  My back to the top button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1397,6 +1424,12 @@
                 scroll-snap-align: start;
             }
             .testimonial-nav {
+                display: block; /* Show on mobile */
+            }
+            .testimonials .container {
+                position: relative; /* Needed for absolute positioning of arrows */
+            }
+            .testimonial-arrows {
                 display: block; /* Show on mobile */
             }
         }
