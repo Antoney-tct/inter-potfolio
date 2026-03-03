@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const body = document.body;
         const icon = themeToggle.querySelector('i');
 
-        // Apply theme on initial load
+        // Applied theme on initial load
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
             if (icon) icon.className = 'fas fa-sun';
