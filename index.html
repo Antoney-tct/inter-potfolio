@@ -396,14 +396,13 @@
             const featuredProjects = Object.entries(projectData).slice(0, 3);
 
             featuredProjects.forEach(([id, project]) => {
-                const cardLink = document.createElement('a');
-                cardLink.href = `project.html?id=${id}`;
-                cardLink.className = 'work-card-link';
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'work-card';
 
                 const tagsHtml = project.technologies.slice(0, 3).map(t => `<span class="work-tag">${t}</span>`).join('');
 
-                cardLink.innerHTML = `
-                    <div class="work-card">
+                cardDiv.innerHTML = `
+                    <a href="projects.html?filter=${encodeURIComponent(project.category)}" style="text-decoration: none; color: inherit; display: block;">
                         <img src="${project.image}" alt="${project.title}" class="work-image">
                         <div class="work-content">
                             <span class="work-category">${project.category}</span>
@@ -411,8 +410,11 @@
                             <p style="font-size: 0.95rem;">${project.description.substring(0, 80)}...</p>
                             <div class="work-tags">${tagsHtml}</div>
                         </div>
+                    </a>
+                    <div style="padding: 0 25px 25px;">
+                        <a href="project.html?id=${id}" class="btn btn-secondary" style="width: 100%; justify-content: center; font-size: 0.9rem;">View Project Details</a>
                     </div>`;
-                featuredGrid.appendChild(cardLink);
+                featuredGrid.appendChild(cardDiv);
             });
         }
 

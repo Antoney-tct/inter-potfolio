@@ -464,7 +464,8 @@
             display: block;
             transition: var(--transition);
         }
-        .work-card-link:hover .work-card {
+        .work-card-link:hover .work-card,
+        .work-card:hover {
             border-color: var(--sage);
             transform: translateY(-5px);
         }

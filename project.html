@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details · Antoney Ouko</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">antoney ouko</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#skills">craft</a></li>
+                <li><a href="projects.html" style="color: var(--terracotta);">Projects</a></li>
+                <li><a href="about.html">My story</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">connect</a></li>
+                <li><a href="index.html#contact" class="btn-hire-me">Hire Me</a></li>
+                <li><button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-detail-section">
+            <div class="container">
+                <div id="project-content-wrapper">
+                    <!-- Project details will be injected here by JavaScript -->
+                </div>
+                <div id="project-not-found" style="display: none; text-align: center; padding: 50px 0;">
+                    <h2 class="project-title-large">Project Not Found</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 40px;">Sorry, the project you are looking for does not exist or has been moved.</p>
+                    <a href="projects.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i> Back to All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>© <span id="copyright-year"></span> antoney ouko — made with ◈ in nairobi</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="main.js" defer></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectContentWrapper = document.getElementById('project-content-wrapper');
+            const projectNotFoundDiv = document.getElementById('project-not-found');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            const project = projectData[projectId];
+
+            if (project) {
+                // Set the browser tab title dynamically
+                document.title = `${project.title} · Antoney Ouko`;
+
+                const technologiesHtml = project.technologies.map(tech =>
+                    `<li><i class="fas fa-check"></i> ${tech}</li>`
+                ).join('');
+
+                projectContentWrapper.innerHTML = `
+                    <div class="project-header">
+                        <span class="work-category">${project.category}</span>
+                        <h1 class="project-title-large">${project.title}</h1>
+                    </div>
+
+                    <img src="${project.image}" alt="${project.title}" class="project-main-image">
+
+                    <div class="project-body-grid">
+                        <div class="project-description-block post-content-body">
+                            <h2>Project Overview</h2>
+                            <p>${project.description}</p>
+                        </div>
+                        <aside class="project-meta-block">
+                            <h3>Project Details</h3>
+                            <ul class="service-features" style="margin-bottom: 30px;">
+                                ${technologiesHtml}
+                            </ul>
+                            <div style="display: flex; flex-direction: column; gap: 15px;">
+                                <a href="${project.liveLink}" class="btn btn-primary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt"></i> View Live Project
+                                </a>
+                                <a href="${project.githubLink}" class="btn btn-secondary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                        </aside>
+                    </div>
+                `;
+            } else {
+                // If no project is found for the given ID, show the 'not found' message
+                projectContentWrapper.style.display = 'none';
+                projectNotFoundDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
