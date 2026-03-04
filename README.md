@@ -1,17 +1,30 @@
 # Antoney Ouko - Personal Portfolio & Studio
 
-A professional, human-centered portfolio website designed for a Business IT Specialist. This project features a custom design system, a dynamic blog, and an interactive chatbot.
+This is my personal professional, human-centered portfolio website designed for a Business IT Specialist. This project features a custom design system, a dynamic blog, and an interactive chatbot.
 
-## 🌟 Features
+## 🌟My site Features
 
-- **Responsive Design:** Fluid layout that adapts to mobile, tablet, and desktop screens.
-- **Theme System:** Native Dark/Light mode toggle with preference saved in LocalStorage.
+- **Responsive Design:**
+ Fluid layout that adapts to mobile, tablet, and desktop screens.
+
+- **Theme System:**
+ Native Dark/Light mode toggle with preference saved in LocalStorage.
+
 - **Dynamic Content Engine:**
-  - **Blog:** Posts are stored in `blog-data.js` and rendered dynamically on `blog.html` and `post.html`.
-  - **Projects:** Portfolio items are managed in `data.js` and populated via JavaScript.
-- **"Bot Toney" Chatbot:** A custom, rule-based chatbot that answers visitor questions, suggests topics, and handles idle states.
-- **Contact Integration:** Functional contact form using Web3Forms API.
-- **Animations:** Intersection Observer API used for scroll-triggered fade-in effects.
+  - **Blog:**
+   Posts are stored in `blog-data.js` and rendered dynamically on `blog.html` and `post.html`.
+
+  - **Projects:**
+   Portfolio items are managed in `data.js` and populated via JavaScript.
+
+- **"Bot Toney" Chatbot:** 
+A custom, rule-based chatbot that answers visitor questions, suggests topics, and handles idle states.
+
+- **Contact Integration:** 
+Functional contact form using Web3Forms API.
+
+- **Animations:**
+ Intersection Observer API used for scroll-triggered fade-in effects.
 
 ## 📂 File Structure
 
@@ -31,7 +44,7 @@ A professional, human-centered portfolio website designed for a Business IT Spec
 Open `blog-data.js` and add a new entry to the `blogPosts` object:
 ```javascript
 'new-post-id': {
-    title: 'Your Title',
+    title: 'My New Post Title',
     date: 'Date',
     author: 'Name',
     image: 'path/to/image.jpg',
@@ -48,6 +61,9 @@ Open `style.css` and modify the variables in the `:root` selector to change the 
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **Icons:** Font Awesome
-- **Fonts:** Adobe Fonts (Freight Text) & Google Fonts (Fragment Mono)
+- **Frontend:**
+ HTML5, CSS3, JavaScript (ES6+)
+- **Icons:** 
+Font Awesome
+- **Fonts:** 
+Adobe Fonts (Freight Text) & Google Fonts (Fragment Mono)
