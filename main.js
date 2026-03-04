@@ -1,3 +1,13 @@
+/**
+ * Main JavaScript File
+ * 
+ * Handles global UI interactions for the portfolio website including:
+ * - Theme toggling (Dark/Light mode)
+ * - Mobile navigation menu
+ * - Scroll animations (IntersectionObserver)
+ * - Back to top button logic
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Set Copyright Year
