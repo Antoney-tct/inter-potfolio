@@ -33,7 +33,7 @@
     </header>
 
     <main id="post-container">
-        <!-- Post content will be injected here -->
+        <!-- My Post content will be injected here by my js data -->
     </main>
 
     <footer>
@@ -80,10 +80,10 @@
                 </section>
             `;
 
-            // Populate recent posts in sidebar
+            // I can add some of my  recent posts in sidebar
             const recentPostsSidebar = document.getElementById('recent-posts-sidebar');
             Object.entries(blogPosts).slice(0, 3).forEach(([id, p]) => {
-                if (id !== postId) { // Don't show the current post in the recent list
+                if (id !== postId) { // don't show the current post in the recent list
                     const li = document.createElement('li');
                     li.innerHTML = `<a href="post.html?id=${id}" style="text-decoration:none; color:inherit;">${p.title}</a>`;
                     recentPostsSidebar.appendChild(li);

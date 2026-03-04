@@ -38,7 +38,7 @@
             <p style="max-width: 600px; margin-bottom: 60px;">Thoughts on technology, design, and the human side of digital craftsmanship.</p>
             
             <div class="blog-grid" id="blog-grid">
-                <!-- My blog posts will be here -->
+                <!-- My blog posts will be here from blog-data.js -->
             </div>
         </div>
     </section>
@@ -58,7 +58,7 @@
     <script>
         const grid = document.getElementById('blog-grid');
         
-        // Loop through all posts and create cards
+        // Loop through all my blog posts and create cards
         for (const [id, post] of Object.entries(blogPosts)) {
             const card = document.createElement('a');
             card.href = `post.html?id=${id}`;

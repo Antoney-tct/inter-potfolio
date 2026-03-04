@@ -45,7 +45,7 @@
             </div>
 
             <div class="work-grid" id="all-projects-grid">
-                <!-- Projects will be injected here -->
+                <!--My Projects will be injected here by JS-->
             </div>
         </div>
     </section>
@@ -118,7 +118,7 @@
                 });
             });
 
-            // Set initial active button based on URL parameter
+            // This part sets  initially active button based on the  URL parameter of my project cards
             const initialBtn = filterBar.querySelector(`[data-filter="${initialFilter}"]`);
             if (initialBtn) {
                 initialBtn.classList.add('active');
