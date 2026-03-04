@@ -1,4 +1,27 @@
 const blogPosts = {
+    'silicon-savannah-tech': {
+        title: 'Silicon Savannah: The Pulse of Kenya’s Tech Innovation',
+        date: 'May 12, 2024',
+        author: 'Antoney Ouko',
+        image: 'image/tech.png', 
+        excerpt: 'Nairobi is no longer just a city; it is the heartbeat of African innovation. From Fintech 2.0 to AgriTech, explore how Kenya is shaping the future of technology.',
+        content: `
+            <p>Kenya has long been dubbed the "Silicon Savannah," but the label is no longer just an aspiration—it's a reality. Nairobi has evolved into a premier tech hub, attracting global giants and nurturing homegrown startups that are solving real-world problems.</p>
+            
+            <h2>Fintech 2.0: Beyond M-Pesa</h2>
+            <p>While M-Pesa laid the foundation, the new wave of Fintech is building skyscrapers on top of it. We are seeing a shift towards <strong>digital lending, wealth management, and interoperability</strong>. Startups are leveraging data analytics to provide credit to the unbanked, while blockchain is being explored to secure land registries and supply chains.</p>
+            
+            <h2>The Global Tech Magnet</h2>
+            <p>It's impossible to ignore the physical presence of big tech. With <strong>Microsoft's Africa Development Centre (ADC)</strong> and <strong>Google's Product Development Center</strong> calling Nairobi home, the city has become a training ground for world-class engineering talent. This isn't just outsourcing; it's co-creation.</p>
+            
+            <h2>AgriTech: Coding for Food Security</h2>
+            <p>Innovation in Kenya is deeply practical. AgriTech platforms are revolutionizing how food moves from farm to fork. By using mobile apps to connect farmers directly with retailers, companies are reducing post-harvest losses and ensuring fair prices. It’s a perfect example of code meeting culture.</p>
+            
+            <blockquote>"Innovation in Kenya isn't about gadgets; it's about survival and prosperity. It's tech with a heartbeat."</blockquote>
+            
+            <p>As a developer in this ecosystem, it is an electrifying time to build. The tools are available, the market is hungry, and the world is watching.</p>
+        `
+    },
     'why-qa-matters': {
         title: 'More Than Just Bugs: Why Quality Assurance is a Mindset',
         date: 'October 26, 2023',

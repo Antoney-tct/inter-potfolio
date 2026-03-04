@@ -392,7 +392,7 @@
         // Load featured work
         const featuredGrid = document.getElementById('featured-work-grid');
         if (featuredGrid && typeof projectData !== 'undefined') {
-            // Get the first 3 projects from data.js
+            // Get the first 3 projects from my data.js code
             const featuredProjects = Object.entries(projectData).slice(0, 3);
 
             featuredProjects.forEach(([id, project]) => {
@@ -418,7 +418,7 @@
             });
         }
 
-        // Load recent blog posts
+        // Loading of my recent recent blog posts
         const recentPostsGrid = document.getElementById('recent-posts-grid');
         if (recentPostsGrid && typeof blogPosts !== 'undefined') {
             const recentPosts = Object.entries(blogPosts).slice(0, 2); // Get first 2 posts
@@ -443,7 +443,7 @@
             });
         }
 
-        // Download CV
+        // Download my CV section functionality
         document.getElementById('downloadCV').addEventListener('click', () => {
             const cv = `ANTONEY OUKO
 business it specialist
@@ -479,7 +479,7 @@ education:
             window.URL.revokeObjectURL(url);
         });
 
-        // Contact Form Handling
+        // Contact Form Handling which i have connected to w3forms
         document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('.form-submit');
@@ -513,7 +513,7 @@ education:
             }, 3000);
         });
 
-        // Chatbot
+        // My  Chatbot functionality where I have based all the conversations on if-else statements 
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
         const closeChat = document.getElementById('closeChat');
@@ -522,21 +522,77 @@ education:
         const chatMessages = document.getElementById('chatMessages');
         let userName = localStorage.getItem('userName');
         let isWaitingForName = false;
+        let idleTimer = null; // For inactivity timer
+        let idleSuggestionSent = false; // Flag to prevent spamming suggestions
 
-        // My chartbot Rule-based(they are based on if else statements) responses.
+        // My chatbot Rule-based(they are based on if else statements) responses.
         const responses = {
-            skills: "Antoney specializes in web development (PHP, MySQL, JS), UI/UX design using Figma, and Quality Assurance (QA) testing.",
-            work: "You can see his selected work just above this section! He has built e-commerce platforms, designed brand identities, and created testing frameworks.",
-            process: "He believes in crafting digital experiences with warmth and a human touch. His process involves understanding the user, clean design, and robust testing.",
-            contact: "The best way to connect is by sending a message through the contact form or emailing him directly at aouko178@gmail.com.",
-            about: "Antoney is a business IT specialist from Nairobi, Kenya. He enjoys creating technology that feels human and intuitive.",
-            location: "Antoney is based in Nairobi, Kenya, but is available for remote work worldwide.",
-            education: "He holds a Diploma in Business IT from Zetech University and certifications in Cisco Networking.",
-            tools: "His tech stack includes HTML, CSS, JavaScript, PHP, MySQL, Figma, and Adobe Creative Suite.",
-            social: "You can connect with him on LinkedIn, GitHub, and Instagram. Links are in the footer!",
-            joke: "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-            default: "That's a great question! I'm not sure about that one. How about trying to ask about 'skills', 'work', 'process', or 'contact'?"
-        };
+            skills: [
+                "Antoney specializes in web development (PHP, MySQL, JS), UI/UX design using Figma, and Quality Assurance (QA) testing. He loves building things that are both beautiful and robust.",
+                "His main crafts are: 1) Web Development for thoughtful, responsive sites. 2) UI/UX & Design to create warm, intuitive interfaces. 3) QA & Consulting to make sure digital products work perfectly."
+            ],
+            work: [
+                "You can see his featured work right on this page! He's built e-commerce platforms, designed brand identities, and created testing frameworks. For a full list, check out the 'Projects' page.",
+                "He has worked on a variety of projects. From full-stack e-commerce sites to detailed QA for mobile apps. Is there a specific type of work you're curious about?"
+            ],
+            process: [
+                "He believes in crafting digital experiences with warmth. His process involves deeply understanding the user, creating clean designs, writing clean code, and robust testing to ensure a personal touch.",
+                "His process is very human-centered. It starts with listening and understanding the goal, then moves to design, development, and thorough testing. He aims for quality and a bit of warmth in everything."
+            ],
+            contact: [
+                "The best way to connect is by using the contact form on this page. He reads every message! You can also email him directly at aouko178@gmail.com.",
+                "He'd love to hear from you! Just scroll down to the 'let's connect' section and send him a note. Or, if you prefer, his email is aouko178@gmail.com."
+            ],
+            about: [
+                "Antoney is a business IT specialist from Nairobi, Kenya. He's passionate about creating technology that feels human and intuitive, bridging the gap between complex systems and real people.",
+                "He's a tech creative who loves making things work perfectly. Part developer, part designer, and part QA expert, all with a focus on making technology feel more personal."
+            ],
+            location: [
+                "Antoney is based in the vibrant city of Nairobi, Kenya. He's available for remote work with clients from anywhere in the world.",
+                "He's located in Nairobi, Kenya, but the beauty of digital work means he can collaborate on projects globally!"
+            ],
+            education: [
+                "He holds a Diploma in Business IT from Zetech University and has certifications in Cisco Networking and Cybersecurity. He's a big believer in lifelong learning.",
+                "His formal education is a Diploma in Business IT, but he's also certified in Cisco Networking and constantly learning new skills to stay sharp."
+            ],
+            tools: [
+                "His digital toolkit includes HTML, CSS, JavaScript, PHP, and MySQL for development. For design, he uses Figma and the Adobe Creative Suite. For QA, he's proficient with tools like JIRA.",
+                "He uses a variety of tools to get the job done! For coding: VS Code with a stack of JS, PHP, and MySQL. For design: Figma is his go-to. For testing: a sharp eye and tools like JIRA."
+            ],
+            social: [
+                "You can find him on LinkedIn, GitHub, and Instagram! All the links are in the footer at the bottom of the page. Go on, give him a follow!",
+                "Absolutely! He's active on LinkedIn for professional stuff and GitHub for code. You can find the links in the footer."
+            ],
+            joke: [
+                "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+                "I told my computer I needed a break, and now it won’t stop sending me Kit-Kat ads.",
+                "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings."
+            ],
+            how_are_you: [
+                "I'm just a set of scripts, but I'm running at 100% efficiency! Thanks for asking. How can I help you?",
+                "I'm doing great, thanks! Ready to assist you with any questions about Antoney."
+            ],
+            thanks: [
+                "You're very welcome!",
+                "No problem at all. Is there anything else?",
+                "Happy to help! Let me know if you need more info."
+            ],
+            bye: [
+                "Goodbye! Have a wonderful day.",
+                "Catch you later! Feel free to pop back in anytime.",
+                "Bye for now! Thanks for stopping by."
+            ],
+            default: [
+                "That's an interesting question! I'm not equipped to answer that, but you could try asking about Antoney's 'skills', 'projects', or 'contact' info.",
+                "I'm not sure I have the answer to that one. My knowledge is focused on Antoney's professional life. Maybe try asking about his 'process' or 'education'?",
+                "Hmm, I'm drawing a blank. I can tell you about his 'work', 'skills', or how to 'get in touch' with him."
+            ],
+            idle_suggestion: [
+                "Not sure what to ask? You can try asking about 'skills', 'work', or 'process'",
+                "Just so you know, you can ask me about Antoney's 'projects' or how to 'contact' him",
+                "Feel free to ask me anything! For example, try 'tell me a joke'."
+            ]
+    };
 
         // Update initial bot message if name is known
         const initialBotMessage = document.querySelector('.message.bot');
@@ -546,8 +602,17 @@ education:
             initialBotMessage.textContent = "Hi! I'm Bot Toney. You can ask me about Antoney, or tell me your name to make this more personal!";
         }
 
+        // Helper to get a random response from an array
+        function getRandomResponse(key) {
+            const responseArray = responses[key];
+            if (responseArray) {
+                return responseArray[Math.floor(Math.random() * responseArray.length)];
+            }
+            return "I'm not sure how to respond to that.";
+        }
+
         function getResponse(input) {
-            const lowerInput = input.toLowerCase();
+            const lowerInput = input.toLowerCase().trim();
 
             // 1. If we just asked for the name, the next message is the name.
             if (isWaitingForName) {
@@ -572,7 +637,11 @@ education:
                 }
             }
             
-            // 3. Handle greetings
+            // 3. Handle greetings & pleasantries
+            if (lowerInput.includes('how are you')) return getRandomResponse('how_are_you');
+            if (lowerInput.includes('thank') || lowerInput.includes('thx')) return getRandomResponse('thanks');
+            if (lowerInput === 'bye' || lowerInput === 'goodbye' || lowerInput.includes('see you')) return getRandomResponse('bye');
+
             if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('hey')) {
                 const hour = new Date().getHours();
                 let timeOfDayGreeting;
@@ -588,37 +657,55 @@ education:
                 }
             }
 
-            // Ask for time
+            // 4. Handle specific questions
             if (lowerInput.includes('time')) {
                 const now = new Date();
                 const timeString = now.toLocaleTimeString('en-US', { timeZone: 'Africa/Nairobi', hour: '2-digit', minute: '2-digit' });
                 return `The current time here in Nairobi is ${timeString}. Is there anything else I can help with?`;
             }
 
-            if (lowerInput.includes('skill') || lowerInput.includes('craft')) return responses.skills;
-            if (lowerInput.includes('work') || lowerInput.includes('project')) return responses.work;
-            if (lowerInput.includes('process') || lowerInput.includes('studio')) return responses.process;
-            if (lowerInput.includes('contact')) return responses.contact;
-            if (lowerInput.includes('who are you') || lowerInput.includes('about')) return responses.about;
-            if (lowerInput.includes('location') || lowerInput.includes('where') || lowerInput.includes('based')) return responses.location;
-            if (lowerInput.includes('education') || lowerInput.includes('study') || lowerInput.includes('degree') || lowerInput.includes('school')) return responses.education;
-            if (lowerInput.includes('tool') || lowerInput.includes('tech') || lowerInput.includes('stack') || lowerInput.includes('software')) return responses.tools;
-            if (lowerInput.includes('social') || lowerInput.includes('linkedin') || lowerInput.includes('github') || lowerInput.includes('instagram')) return responses.social;
-            if (lowerInput.includes('joke') || lowerInput.includes('funny')) return responses.joke;
+            if (lowerInput.includes('skill') || lowerInput.includes('craft') || lowerInput.includes('what does he do')) return getRandomResponse('skills');
+            if (lowerInput.includes('work') || lowerInput.includes('project') || lowerInput.includes('portfolio')) return getRandomResponse('work');
+            if (lowerInput.includes('process') || lowerInput.includes('studio')) return getRandomResponse('process');
+            if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('phone')) return getRandomResponse('contact');
+            if (lowerInput.includes('who are you') || lowerInput.includes('about') || lowerInput.includes('story')) return getRandomResponse('about');
+            if (lowerInput.includes('location') || lowerInput.includes('where') || lowerInput.includes('based')) return getRandomResponse('location');
+            if (lowerInput.includes('education') || lowerInput.includes('study') || lowerInput.includes('degree') || lowerInput.includes('school')) return getRandomResponse('education');
+            if (lowerInput.includes('tool') || lowerInput.includes('tech') || lowerInput.includes('stack') || lowerInput.includes('software')) return getRandomResponse('tools');
+            if (lowerInput.includes('social') || lowerInput.includes('linkedin') || lowerInput.includes('github') || lowerInput.includes('instagram')) return getRandomResponse('social');
+            if (lowerInput.includes('joke') || lowerInput.includes('funny')) return getRandomResponse('joke');
 
-            // Personalize default response
+            // 5. Default response with personalization
+            let defaultResponse = getRandomResponse('default');
             if (userName) {
-                return `That's a good question, ${userName}. I'm not sure about that one. Try asking about 'skills', 'work', or 'contact'.`;
+                defaultResponse = defaultResponse.replace("That's an interesting question!", `That's an interesting question, ${userName}!`);
+                defaultResponse = defaultResponse.replace("Hmm, I'm drawing a blank.", `Hmm, I'm drawing a blank on that one, ${userName}.`);
             }
-            return responses.default;
+            return defaultResponse;
         }
 
         function addMessage(text, isUser) {
             const div = document.createElement('div');
             div.className = isUser ? 'message user' : 'message bot';
-            div.textContent = text;
+
+            // Check if the response contains suggestion keywords and create buttons
+            if (!isUser && (text.includes("'skills'") || text.includes("'work'") || text.includes("'process'") || text.includes("'projects'") || text.includes("'contact'") || text.includes("'joke'"))) {
+                div.innerHTML = text.replace(/'([^']+)'/g, '<button class="suggestion-chip">$1</button>');
+
+                // Add event listeners to the suggestion chips
+                setTimeout(() => { // Delay to ensure the chips are added to the DOM
+                    const suggestionChips = div.querySelectorAll('.suggestion-chip');
+                    suggestionChips.forEach(chip => {
+                        chip.addEventListener('click', () => {
+                            chatInput.value = chip.textContent; // Place the suggestion into the input
+                            handleSendChat(); // Simulate sending the message
+                        });
+                    });
+                }, 0);
+            } else {
+                div.textContent = text; // Otherwise, just display the text
+            }
             chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         function showTypingIndicator() {
@@ -639,6 +726,25 @@ education:
             if (indicator) indicator.remove();
         }
 
+        function startIdleTimer() {
+            clearTimeout(idleTimer); // Clear any existing timer
+            if (chatWindow.style.display !== 'flex') return; // Don't run if chat is closed
+
+            idleTimer = setTimeout(() => {
+                if (!idleSuggestionSent) {
+                    const suggestion = getRandomResponse('idle_suggestion');
+                    addMessage(suggestion, false);
+                    ringtone.play().catch(e => console.log("Audio playback failed", e));
+                    idleSuggestionSent = true;
+                }
+            }, 8000); // 8 seconds of inactivity
+        }
+
+        function resetIdleTimer() {
+            idleSuggestionSent = false;
+            startIdleTimer();
+        }
+
         // Audio element for the ringtone
         const ringtone = new Audio('sound/universfield-new-notification-022-370046.mp3');
         const sentSound = new Audio('sound/pop.mp3'); // Make sure to add a 'pop.mp3' to your sound folder
@@ -646,6 +752,7 @@ education:
         const handleSendChat = () => {
             const msg = chatInput.value.trim();
             if (msg) {
+                resetIdleTimer(); // Reset timer on send
                 sentSound.play().catch(error => console.log('Audio playback failed:', error));
                 addMessage(msg, true);
                 chatInput.value = '';
@@ -662,20 +769,43 @@ education:
 
         // Toggle Chat Window
         chatToggle.addEventListener('click', () => {
-            chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
+            const isOpening = chatWindow.style.display !== 'flex';
+            chatWindow.style.display = isOpening ? 'flex' : 'none';
+            if (isOpening) {
+                resetIdleTimer(); // Start the timer when chat opens
+            } else {
+                clearTimeout(idleTimer); // Stop timer when chat closes
+            }
         });
 
         closeChat.addEventListener('click', () => {
             chatWindow.style.display = 'none';
+            clearTimeout(idleTimer); // Stop timer when chat closes
         });
 
         sendChat.addEventListener('click', handleSendChat);
 
+        chatInput.addEventListener('input', resetIdleTimer); // Reset on typing
+
         chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSendChat();
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent default action
+                handleSendChat();
+            }
         });
 
     </script>
+    <style>
+        .suggestion-chip {
+            background-color: var(--cream);
+            border: 1px solid var(--border-soft);
+            border-radius: 20px;
+            color: var(--ink);
+            padding: 6px 12px;
+            margin: 4px;
+            cursor: pointer;
+        }
+    </style>
 
     <script>
         // Testimonial Carousel (for mobile)
