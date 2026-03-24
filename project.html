@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details · Antoney Ouko</title>
+    <link rel="icon" href="image/photo2.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -74,6 +75,11 @@
                 // Set the browser tab title dynamically
                 document.title = `${project.title} · Antoney Ouko`;
 
+                // Check for custom button text/icons in the project data
+                const liveBtnText = project.liveBtnText || 'View Live Project';
+                const sourceBtnText = project.sourceBtnText || 'View on GitHub';
+                const sourceBtnIcon = project.sourceBtnIcon || 'fab fa-github';
+
                 const technologiesHtml = project.technologies.map(tech =>
                     `<li><i class="fas fa-check"></i> ${tech}</li>`
                 ).join('');
@@ -98,10 +104,10 @@
                             </ul>
                             <div style="display: flex; flex-direction: column; gap: 15px;">
                                 <a href="${project.liveLink}" class="btn btn-primary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-external-link-alt"></i> View Live Project
+                                    <i class="fas fa-external-link-alt"></i> ${liveBtnText}
                                 </a>
                                 <a href="${project.githubLink}" class="btn btn-secondary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> View on GitHub
+                                    <i class="${sourceBtnIcon}"></i> ${sourceBtnText}
                                 </a>
                             </div>
                         </aside>
