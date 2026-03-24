@@ -23,8 +23,11 @@ const projectData = {
         image: 'image/QAimage.png',
         description: 'Led the quality assurance phase for a large-scale mobile banking application. Developed and executed a comprehensive testing strategy that included manual testing, regression testing, and user acceptance testing (UAT). Identified and documented over 200 bugs, leading to a more stable and reliable final product.',
         technologies: ['Manual Testing', 'JIRA', 'Test Case Development', 'Bug Tracking', 'Regression Testing'],
-        liveLink: 'projects.html',
-        githubLink: '#'
+        liveLink: '#', // Replace with the link to the site you tested
+        liveBtnText: 'View Tested Site',
+        githubLink: 'https://docs.google.com/spreadsheets/d/18qC9_4rgRGxaIoJ-IFB3zvDKMvi6w6X_3tKzXmaOoE0/edit?usp=drivesdk', 
+        sourceBtnText: 'View RTMs & Test Cases',
+        sourceBtnIcon: 'fab fa-google-drive'
     }
     
 };
