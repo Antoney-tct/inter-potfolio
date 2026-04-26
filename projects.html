@@ -85,7 +85,7 @@
                     card.className = 'work-card-link';
                     
                     const tagsHtml = project.technologies.slice(0, 3).map(t => 
-                        `<span class="work-tag">${t}</span>`
+                        `<a href="tool.html?name=${encodeURIComponent(t)}" class="work-tag" style="text-decoration: none;">${t}</a>`
                     ).join('');
 
                     card.innerHTML = `

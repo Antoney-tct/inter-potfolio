@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Spotlight · Antoney Ouko</title>
+    <link rel="icon" href="image/photo2.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tool-header { padding-top: 150px; margin-bottom: 50px; }
+        .timeline-container { margin: 40px 0; border-left: 2px solid var(--border-soft); padding-left: 20px; }
+        .timeline-item { margin-bottom: 25px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px; background: var(--terracotta); border-radius: 50%; }
+        .timeline-container { margin: 40px 0; border-left: 1px solid var(--border-soft); padding-left: 30px; max-width: 700px; }
+        .timeline-item { margin-bottom: 35px; position: relative; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; background: var(--bg); border: 2px solid var(--terracotta); border-radius: 50%; z-index: 2; }
+        .timeline-date { font-family: 'Fragment Mono', monospace; color: var(--terracotta); font-size: 0.85rem; display: block; margin-bottom: 5px; text-transform: lowercase; }
+        .timeline-activity { font-weight: 500; font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
+        .sample-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .sample-img { width: 100%; border-radius: 12px; border: 1px solid var(--border-soft); aspect-ratio: 3/2; object-fit: cover; }
+
+        .skill-level-box { margin-top: 30px; max-width: 400px; }
+        .skill-bar-bg { background: var(--border-soft); height: 8px; border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .skill-bar-fill { background: var(--terracotta); height: 100%; width: 0; transition: width 1s ease-out; }
+        .skill-label { display: flex; justify-content: space-between; font-family: 'Fragment Mono'; font-size: 0.85rem; color: var(--clay); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">antoney ouko</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">All Projects</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="tool-header">
+        <div class="container">
+            <h1 id="tool-name" style="margin-bottom: 20px;">Tool</h1>
+            <p id="tool-info" style="max-width: 800px; font-size: 1.1rem; color: var(--warm-gray); line-height: 1.6;"></p>
+
+            <div id="skill-level-section" class="skill-level-box">
+                <div class="skill-label">
+                    <span>Proficiency Level</span>
+                    <span id="skill-percentage">0%</span>
+                </div>
+                <div class="skill-bar-bg"><div id="skill-bar-fill" class="skill-bar-fill"></div></div>
+            </div>
+            
+            <div id="timeline-section" style="margin-top: 60px;">
+                <h3>My Journey with this Tool</h3>
+                <div class="timeline-container" id="timeline-list"></div>
+            </div>
+
+            <div id="samples-section" style="margin-top: 60px;">
+                <h3>Design & Output Samples</h3>
+                <div class="sample-grid" id="sample-grid"></div>
+            </div>
+
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border-soft);">
+                <h3>Projects using this technology</h3>
+                <div class="work-grid" id="related-projects-grid" style="margin-top: 30px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="tool-data.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const toolName = urlParams.get('name');
+        const nameDisplay = document.getElementById('tool-name');
+
+        if (toolName) {
+            nameDisplay.textContent = toolName.toLowerCase();
+            document.title = `${toolName} Spotlight · Antoney Ouko`;
+
+            const info = toolData[toolName] || { 
+                info: `I am highly proficient in ${toolName}, utilizing it across various professional projects to ensure high-quality delivery.`,
+                timeline: [], samples: [] 
+            };
+
+            document.getElementById('tool-info').textContent = info.info;
+
+            // Render Skill Level
+            if (info.level) {
+                setTimeout(() => {
+                    document.getElementById('skill-bar-fill').style.width = info.level + '%';
+                    document.getElementById('skill-percentage').textContent = info.level + '%';
+                }, 100);
+            } else {
+                document.getElementById('skill-level-section').style.display = 'none';
+            }
+
+            // Render Timeline
+            const timelineList = document.getElementById('timeline-list');
+            if (info.timeline.length > 0) {
+                info.timeline.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'timeline-item';
+                    div.innerHTML = `<div style="font-family: 'Fragment Mono'; color: var(--clay); font-size: 0.9rem;">${item.date}</div><div style="font-weight: 500; margin-top: 5px;">${item.activity}</div>`;
+                    div.innerHTML = `<span class="timeline-date">${item.date}</span><div class="timeline-activity">${item.activity}</div>`;
+                    timelineList.appendChild(div);
+                });
+            } else { document.getElementById('timeline-section').style.display = 'none'; }
+
+            // Render Samples
+            const sampleGrid = document.getElementById('sample-grid');
+            if (info.samples.length > 0) {
+                info.samples.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src; img.className = 'sample-img';
+                    sampleGrid.appendChild(img);
+                });
+            } else { document.getElementById('samples-section').style.display = 'none'; }
+
+            // Render Related Projects from data.js
+            const relatedGrid = document.getElementById('related-projects-grid');
+            const related = Object.entries(projectData).filter(([id, p]) => 
+                p.technologies.some(t => t.toLowerCase() === toolName.toLowerCase())
+            );
+
+            related.forEach(([id, project]) => {
+                const card = document.createElement('div');
+                card.className = 'work-card';
+                card.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="work-image">
+                    <div class="work-content">
+                        <h3 style="margin-bottom: 10px;">${project.title}</h3>
+                        <a href="project.html?id=${id}" class="btn btn-secondary" style="margin-top: 15px; width: 100%; justify-content: center;">Full Details</a>
+                    </div>
+                `;
+                relatedGrid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

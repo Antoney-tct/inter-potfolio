@@ -393,14 +393,20 @@
         // Load featured work
         const featuredGrid = document.getElementById('featured-work-grid');
         if (featuredGrid && typeof projectData !== 'undefined') {
-            // Get the first 3 projects from my data.js code
-            const featuredProjects = Object.entries(projectData).slice(0, 3);
+            // Sort and get the first 3 projects (prioritizing Quality Assurance)
+            const featuredProjects = Object.entries(projectData)
+                .sort(([, a], [, b]) => {
+                    if (a.category === 'Quality Assurance' && b.category !== 'Quality Assurance') return -1;
+                    if (a.category !== 'Quality Assurance' && b.category === 'Quality Assurance') return 1;
+                    return 0;
+                })
+                .slice(0, 3);
 
             featuredProjects.forEach(([id, project]) => {
                 const cardDiv = document.createElement('div');
                 cardDiv.className = 'work-card';
 
-                const tagsHtml = project.technologies.slice(0, 3).map(t => `<span class="work-tag">${t}</span>`).join('');
+                const tagsHtml = project.technologies.slice(0, 3).map(t => `<a href="tool.html?name=${encodeURIComponent(t)}" class="work-tag" style="text-decoration: none;">${t}</a>`).join('');
 
                 cardDiv.innerHTML = `
                     <a href="projects.html?filter=${encodeURIComponent(project.category)}" style="text-decoration: none; color: inherit; display: block;">
@@ -833,7 +839,6 @@ education:
                 });
 
                 // 2. Update dots on scroll
-                const dots = testimonialNav.querySelectorAll('.testimonial-dot');
                 const dots = testimonialNav.querySelectorAll('.testimonial-dot');
                 const updateDotsOnScroll = () => {
                     const scrollLeft = testimonialGrid.scrollLeft;
