@@ -56,6 +56,8 @@
             font-family: 'Graphik', -apple-system, BlinkMacSystemFont, sans-serif;
             font-weight: 400;
             line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            scroll-behavior: smooth;
         }
 
         /* ===== TYPOGRAPHY ===== */
@@ -299,6 +301,12 @@
             position: relative;
             animation: subtleFloat 8s ease-in-out infinite;
         }
+        
+        .hand-drawn-circle:hover .organic-shape {
+            transform: scale(1.02) rotate(1deg);
+            border-style: solid;
+            transition: var(--transition);
+        }
 
         @keyframes subtleFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -368,6 +376,7 @@
         .btn-primary:hover {
             background: transparent;
             color: var(--terracotta);
+            border-color: var(--terracotta);
             transform: translateY(-3px);
         }
 
@@ -581,6 +590,28 @@
         .project-description-block p {
             font-size: 1.2rem;
             line-height: 1.7;
+        }
+
+        /* Glassmorphism for the Chat Window */
+        .chat-window {
+            backdrop-filter: blur(12px);
+            background: var(--header-bg);
+        }
+
+        /* Custom Scrollbar for that premium feel */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-soft);
+            border-radius: 10px;
+            border: 3px solid var(--bg);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--clay);
         }
 
         .post-content-body blockquote {
@@ -1213,6 +1244,23 @@
             color: var(--ink);
         }
 
+        /* Chatbot Suggestion Chips */
+        .suggestion-chip {
+            background-color: var(--cream);
+            border: 1px solid var(--border-soft);
+            border-radius: 20px;
+            color: var(--ink);
+            padding: 6px 12px;
+            margin: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .suggestion-chip:hover {
+            background-color: var(--terracotta);
+            color: white;
+            border-color: var(--terracotta);
+        }
+
         .chat-send {
             width: 45px;
             height: 45px;
@@ -1221,6 +1269,50 @@
             border: none;
             color: white;
             cursor: pointer;
+        }
+
+        /* Reply Preview above input */
+        .reply-preview {
+            display: flex;
+            align-items: center;
+            background: var(--cream);
+            border-top: 1px solid var(--border-soft);
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .reply-preview .quoted-text-preview {
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-style: italic;
+            margin-right: 10px;
+        }
+
+        .reply-preview .clear-reply-btn {
+            background: none;
+            border: none;
+            color: var(--warm-gray);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+        .reply-preview .clear-reply-btn:hover {
+            color: var(--terracotta);
+        }
+
+        /* Quoted text inside a message bubble */
+        .message .quoted-text-in-message {
+            display: block;
+            border-left: 3px solid var(--border-soft);
+            padding-left: 8px;
+            margin-bottom: 5px;
+            font-size: 0.8em;
+            color: var(--warm-gray);
+            font-style: italic;
         }
 
         /*My footer section */
