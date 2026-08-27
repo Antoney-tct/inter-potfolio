@@ -56,6 +56,15 @@ const projectData = {
         liveLink: 'https://antoney-tct.github.io/TodoApp/',
         githubLink: 'https://github.com/Antoney-tct/TodoApp'
     },
+'Horizon-films.site': {
+        title: 'Horizon Films site',
+        category: 'Web Development',
+        image: 'image/Screenshot_26-4-2026_11333_antoney-tct.github.io.jpeg',
+        description: 'A simple yet effective web-based to-do list application designed for personal productivity. Users can add, edit, delete, and mark tasks as complete, with data persistence using local storage.',
+        technologies: ['HTML', 'CSS', 'JavaScript', ' W3 Form API','Google-search console',],
+        liveLink: 'https://antoney-tct.github.io/Hillsidebeststudio/',
+        githubLink: 'https://github.com/Antoney-tct/Hillsidebeststudio'
+    },
     'mobile-ui-ux': {
         title: 'Fitness Tracker App Design',
         category: 'Design',
@@ -64,5 +73,32 @@ const projectData = {
         technologies: ['Figma', 'UI/UX Design', 'Prototyping', 'User Research'],
         liveLink: '#',
         githubLink: '#'
+    },
+    'Canva designs': {
+        title: 'Canva Designs',
+        category: 'Design',
+        image: 'image/Screenshot_26-4-2026_11333_antoney-tct.github.io.jpeg',
+        description: 'A simple yet effective web-based to-do list application designed for personal productivity. Users can add, edit, delete, and mark tasks as complete, with data persistence using local storage.',
+        technologies: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
+        liveLink: 'https://antoney-tct.github.io/TodoApp/',
+        canvaLink: 'https://github.com/Antoney-tct/TodoApp'
+    },
+    'Ajira-club site': {
+        title: 'Zetech Ajira Club site',
+        category: 'Web Development',
+        image: 'image/Screenshot_26-4-2026_11333_antoney-tct.github.io.jpeg',
+        description: 'A simple yet effective web-based to-do list application designed for personal productivity. Users can add, edit, delete, and mark tasks as complete, with data persistence using local storage.',
+        technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Mysql', 'W3 Form API','Google-search console', 'Mpesa-integration',],
+        liveLink: 'https://zetech-ajiraclub.site.je/?i=1',
+        githubLink: 'https://github.com/Antoney-tct/Zetech-ajira-club.site'
+    },
+    'Antoney ouko site': {
+        title: 'Antoney ouko site',
+        category: 'Web Development',
+        image: 'image/Screenshot_26-4-2026_11333_antoney-tct.github.io.jpeg',
+        description: 'A simple yet effective web-based to-do list application designed for personal productivity. Users can add, edit, delete, and mark tasks as complete, with data persistence using local storage.',
+        technologies: ['HTML', 'CSS', 'JavaScript', 'W3 Form API','Google-search console',],
+        liveLink: 'https://antoney-tct.github.io/TodoApp/',
+        githubLink: 'https://github.com/Antoney-tct/inter-potfolio'
     }
 };
