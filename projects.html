@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects · Antoney Ouko</title>
-    <link rel="icon" href="image/photo2.jpg" type="image/jpeg">
+    <link rel="icon" href="image/favicon.svg?v=2" type="image/svg+xml">
     <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,14 +13,14 @@
 <body>
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo">antoney ouko</a>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="image/logo.svg" class="logo-mark" alt=""> <span>Antoney Ouko</span></a>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navMenu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <ul class="nav-menu" id="navMenu">
-                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
+                <li><button class="nav-close-btn" id="navClose" type="button" aria-label="Close navigation menu"><i class="fas fa-times" aria-hidden="true"></i></button></li>
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#skills">craft</a></li>
                 <li><a href="projects.html" style="color: var(--terracotta);">Projects</a></li>
@@ -42,6 +42,7 @@
                 <button class="filter-btn" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="Web Development">Web Development</button>
                 <button class="filter-btn" data-filter="Design">Design</button>
+                 <button class="filter-btn" data-filter="Data Annotation">Data Annotation</button>
                 <button class="filter-btn" data-filter="Quality Assurance">Quality Assurance</button>
             </div>
 
@@ -85,12 +86,12 @@
                     card.className = 'work-card-link';
                     
                     const tagsHtml = project.technologies.slice(0, 3).map(t => 
-                        `<a href="tool.html?name=${encodeURIComponent(t)}" class="work-tag" style="text-decoration: none;">${t}</a>`
+                        `<span class="work-tag">${t}</span>`
                     ).join('');
 
                     card.innerHTML = `
                         <div class="work-card">
-                            <img src="${project.image}" alt="${project.title}" class="work-image">
+                            <img src="${project.image || 'image/project-placeholder.svg'}" alt="${project.title} preview" class="work-image" loading="lazy" onerror="this.onerror=null;this.src='image/project-placeholder.svg'">
                             <div class="work-content">
                                 <span class="work-category">${project.category}</span>
                                 <h3 style="margin-bottom: 10px;">${project.title}</h3>

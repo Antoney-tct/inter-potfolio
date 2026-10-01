@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Antoney Ouko monogram</title>
+  <circle cx="24" cy="24" r="23" fill="#c17c5e"/>
+  <path d="M24 7 41 24 24 41 7 24 24 7Z" fill="none" stroke="#f9f3e9" stroke-width="1.5" opacity=".75"/>
+  <text x="24" y="30" fill="#fffaf3" font-family="Georgia,serif" font-size="19" font-weight="700" text-anchor="middle">AO</text>
+</svg>

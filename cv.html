@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV of Antoney Ouko, Business IT specialist based in Nairobi, Kenya.">
+    <title>CV · Antoney Ouko</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.cv-page {
+            background: #f2eee8;
+            color: #242321;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .cv-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px 16px;
+        }
+
+        .cv-sheet {
+            max-width: 850px;
+            margin: 0 auto 48px;
+            padding: 56px 64px;
+            background: #fff;
+            box-shadow: 0 12px 40px rgba(40, 32, 24, 0.12);
+        }
+
+        .cv-sheet h1 {
+            margin-bottom: 8px;
+            font-size: 2.6rem;
+            line-height: 1.1;
+        }
+
+        .cv-role {
+            margin-bottom: 14px;
+            color: #9b5f48;
+            font: 600 0.95rem/1.4 'Fragment Mono', monospace;
+        }
+
+        .cv-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #c17c5e;
+            font: 0.85rem/1.5 Arial, sans-serif;
+        }
+
+        .cv-contact a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .cv-section {
+            margin-top: 26px;
+        }
+
+        .cv-section h2 {
+            margin-bottom: 12px;
+            color: #9b5f48;
+            font: 600 0.95rem/1.3 'Fragment Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .cv-section h2::after {
+            display: none;
+        }
+
+        .cv-section p,
+        .cv-section li {
+            color: #3f3b37;
+            font: 0.92rem/1.55 Arial, sans-serif;
+        }
+
+        .cv-item {
+            margin-bottom: 16px;
+        }
+
+        .cv-item h3 {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 3px;
+            font: 700 1rem/1.4 Arial, sans-serif;
+        }
+
+        .cv-item h3 span {
+            color: #6b625c;
+            font-size: 0.85rem;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .cv-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+            padding-left: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .cv-sheet {
+                margin: 0 12px 24px;
+                padding: 32px 24px;
+            }
+
+            .cv-sheet h1 {
+                font-size: 2rem;
+            }
+
+            .cv-list {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-item h3 {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 14mm;
+            }
+
+            body.cv-page {
+                background: #fff;
+            }
+
+            .cv-actions {
+                display: none;
+            }
+
+            .cv-sheet {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            .cv-section,
+            .cv-item {
+                break-inside: avoid;
+            }
+        }
+        .cv-page {
+            --resume-forest: #203f39;
+            --resume-forest-light: #2b5148;
+            --resume-copper: #bd7657;
+            --resume-paper: #f2f3ee;
+            --resume-ink: #202a26;
+            --resume-muted: #69736d;
+            --resume-line: #dce3dd;
+        }
+
+        .cv-page section {
+            position: static;
+            padding: 0;
+        }
+
+        .cv-page header {
+            position: static;
+            top: auto;
+            left: auto;
+            z-index: auto;
+            width: auto;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            backdrop-filter: none;
+        }
+
+        body.cv-page {
+            min-height: 100vh;
+            background: var(--resume-paper);
+            color: var(--resume-ink);
+            font-family: 'Graphik', Arial, sans-serif;
+        }
+
+        .cv-actions {
+            justify-content: flex-end;
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 22px 0 16px;
+        }
+
+        .cv-action {
+            min-height: 42px;
+            padding: 10px 16px;
+            border: 1px solid var(--resume-line);
+            border-radius: 4px;
+            background: #fff;
+            color: var(--resume-forest);
+            font: 600 0.82rem/1.2 'Graphik', Arial, sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cv-action-primary {
+            border-color: var(--resume-forest);
+            background: var(--resume-forest);
+            color: #fff;
+        }
+
+        .cv-action:hover { border-color: var(--resume-copper); color: var(--resume-copper); }
+        .cv-action-primary:hover { background: var(--resume-forest-light); color: #fff; }
+        .cv-action:focus-visible { outline: 3px solid var(--resume-copper); outline-offset: 3px; }
+
+        .cv-sheet {
+            display: grid;
+            grid-template-columns: 34% 66%;
+            width: min(1020px, calc(100% - 40px));
+            min-height: 900px;
+            margin: 0 auto 48px;
+            overflow: hidden;
+            padding: 0;
+            background: #fff;
+            box-shadow: 0 22px 55px rgba(32, 51, 43, 0.14);
+        }
+
+        .cv-sidebar {
+            padding: 44px 34px;
+            background: var(--resume-forest);
+            color: #f4f5ef;
+        }
+
+        .cv-portrait {
+            display: block;
+            width: 82px;
+            height: 82px;
+            margin-bottom: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .cv-eyebrow,
+        .cv-document-label,
+        .cv-contact-label,
+        .cv-sidebar-heading,
+        .cv-section-index,
+        .cv-item-date,
+        .cv-footer {
+            font-family: 'Fragment Mono', monospace;
+        }
+
+        .cv-eyebrow,
+        .cv-document-label,
+        .cv-contact-label,
+        .cv-sidebar-heading,
+        .cv-section-index,
+        .cv-footer { text-transform: uppercase; }
+
+        .cv-eyebrow { margin-bottom: 8px; color: #d9ae88; font-size: 0.66rem; }
+        .cv-sheet h1.cv-name { margin: 0 0 8px; color: #fff; font: 500 2.35rem/1.03 'Freight Text', Georgia, serif; }
+        .cv-sidebar .cv-role { max-width: 220px; margin: 0; color: #d6dfd7; font: 400 0.88rem/1.5 'Graphik', Arial, sans-serif; }
+        .cv-sidebar-section { margin-top: 34px; }
+        .cv-sidebar-heading { margin: 0 0 16px; padding-bottom: 9px; border-bottom: 1px solid rgba(244, 245, 239, 0.22); color: #e0b28d; font-size: 0.67rem; font-weight: 400; }
+        .cv-contact-list, .cv-cert-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+        .cv-contact-list li, .cv-cert-list li { color: #f1f3ee; font-size: 0.78rem; line-height: 1.5; overflow-wrap: anywhere; }
+        .cv-contact-label { display: block; margin-bottom: 3px; color: #b6c9bd; font-size: 0.58rem; }
+        .cv-sidebar a { color: inherit; text-decoration-color: rgba(255, 255, 255, 0.45); text-underline-offset: 3px; }
+        .cv-sidebar a:hover { color: #e7b58f; }
+        .cv-skill-group + .cv-skill-group { margin-top: 16px; }
+        .cv-skill-group h3 { margin: 0 0 5px; color: #fff; font: 600 0.78rem/1.4 'Graphik', Arial, sans-serif; }
+        .cv-skill-group p { color: #d6dfd7; font-size: 0.75rem; line-height: 1.55; }
+
+        .cv-content { display: flex; flex-direction: column; padding: 54px 54px 42px; }
+        .cv-document-label { align-self: flex-start; margin-bottom: 12px; padding: 7px 10px; background: #f7eee8; color: var(--resume-copper); font-size: 0.63rem; }
+        .cv-section .cv-content-intro { margin: 0; color: #3a4640; font: 400 1.02rem/1.75 'Freight Text', Georgia, serif; }
+        .cv-section { margin-top: 34px; }
+        .cv-section .cv-section-heading { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: var(--resume-forest); font: 600 0.84rem/1.3 'Graphik', Arial, sans-serif; text-transform: uppercase; }
+        .cv-section-index { color: var(--resume-copper); font-size: 0.64rem; font-weight: 400; }
+        .cv-section .cv-section-heading::after { position: static; width: auto; height: 1px; flex: 1; background: var(--resume-line); content: ''; transform: none; }
+        .cv-timeline { display: grid; gap: 22px; margin: 0 0 0 5px; padding: 0 0 0 21px; border-left: 1px solid var(--resume-line); list-style: none; }
+        .cv-timeline-item { position: relative; }
+        .cv-timeline-item::before { position: absolute; top: 5px; left: -26px; width: 9px; height: 9px; border: 2px solid #fff; border-radius: 50%; background: var(--resume-copper); box-shadow: 0 0 0 1px var(--resume-copper); content: ''; }
+        .cv-item-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0; color: var(--resume-ink); font: 600 0.92rem/1.4 'Graphik', Arial, sans-serif; }
+        .cv-item-date { flex: 0 0 auto; color: var(--resume-copper); font-size: 0.65rem; }
+        .cv-item-org { margin: 3px 0 6px; color: var(--resume-muted); font-size: 0.77rem; font-weight: 600; }
+        .cv-item-description { color: #56615a; font-size: 0.78rem; line-height: 1.6; }
+        .cv-education .cv-timeline { gap: 16px; }
+        .cv-footer { margin-top: auto; padding-top: 28px; color: #929b94; font-size: 0.62rem; }
+
+        @media (max-width: 760px) {
+            .cv-actions { justify-content: center; padding: 16px 12px; }
+            .cv-sheet { grid-template-columns: 1fr; width: min(100% - 24px, 620px); margin-bottom: 24px; }
+            .cv-sidebar { padding: 32px 28px; }
+            .cv-sidebar-section { margin-top: 26px; }
+            .cv-content { padding: 36px 28px; }
+        }
+
+        @media (max-width: 480px) {
+            .cv-actions { gap: 8px; }
+            .cv-action { flex: 1; padding: 9px 10px; font-size: 0.74rem; }
+            .cv-sidebar { padding: 28px 24px; }
+            .cv-content { padding: 32px 24px; }
+            .cv-sheet h1.cv-name { font-size: 2.1rem; }
+            .cv-item-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body.cv-page { background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .cv-actions { display: none; }
+            .cv-sheet { grid-template-columns: 68mm 1fr; width: 210mm; min-height: 297mm; margin: 0; overflow: visible; box-shadow: none; }
+            .cv-sidebar { padding: 13mm 10mm; }
+            .cv-content { padding: 14mm 13mm 12mm; }
+            .cv-sidebar-section { margin-top: 8mm; }
+            .cv-section { margin-top: 9mm; }
+            .cv-timeline, .cv-timeline-item { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="cv-page">
+    <nav class="cv-actions" aria-label="CV actions">
+        <a class="cv-action" href="index.html#studio">Back to portfolio</a>
+        <button class="cv-action cv-action-primary" type="button" onclick="window.print()">Print / Save as PDF</button>
+    </nav>
+
+    <main class="cv-sheet">
+        <aside class="cv-sidebar" aria-label="Contact details and skills">
+            <header class="cv-identity">
+                <img class="cv-portrait" src="image/photo2.jpg" alt="Antoney Ouko" width="82" height="82">
+                <p class="cv-eyebrow">Curriculum vitae</p>
+                <h1 class="cv-name">Antoney Ouko</h1>
+                <p class="cv-role">Business Information Technology Specialist</p>
+            </header>
+            <section class="cv-sidebar-section" aria-labelledby="cv-contact-heading">
+                <h2 class="cv-sidebar-heading" id="cv-contact-heading">Contact</h2>
+                <ul class="cv-contact-list">
+                    <li><span class="cv-contact-label">Email</span><a href="mailto:aouko178@gmail.com">aouko178@gmail.com</a></li>
+                    <li><span class="cv-contact-label">Phone</span><a href="tel:+254768343558">+254 768 343 558</a></li>
+                    <li><span class="cv-contact-label">Location</span>Nairobi, Kenya</li>
+                    <li><span class="cv-contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/antoney-ouko-91b220369" target="_blank" rel="noopener noreferrer">Antoney Ouko</a></li>
+                    <li><span class="cv-contact-label">GitHub</span><a href="https://github.com/Antoney-tct" target="_blank" rel="noopener noreferrer">Antoney-tct</a></li>
+                </ul>
+            </section>
+            <section class="cv-sidebar-section" aria-labelledby="cv-skills-heading">
+                <h2 class="cv-sidebar-heading" id="cv-skills-heading">Core skills</h2>
+                <div class="cv-skill-group"><h3>Development</h3><p>HTML, CSS, JavaScript, PHP, MySQL</p></div>
+                <div class="cv-skill-group"><h3>Design</h3><p>UI/UX design with Figma</p></div>
+                <div class="cv-skill-group"><h3>Quality and IT</h3><p>Manual and automated QA, test cases, bug reporting, data annotation, Cisco networking</p></div>
+            </section>
+            <section class="cv-sidebar-section" aria-labelledby="cv-certifications-heading">
+                <h2 class="cv-sidebar-heading" id="cv-certifications-heading">Certifications</h2>
+                <ul class="cv-cert-list">
+                    <li>Cisco Networking Essentials</li>
+                    <li>Ajira Digital Online Work</li>
+                    <li>Introduction to Cybersecurity</li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="cv-content">
+            <p class="cv-document-label">Professional profile · 2026</p>
+            <section class="cv-section" aria-labelledby="cv-profile-heading">
+                <h2 class="cv-section-heading" id="cv-profile-heading"><span class="cv-section-index">01</span>Profile</h2>
+                <p class="cv-content-intro">Business IT specialist working across web development, UI/UX design, and quality assurance. Focused on building and testing digital experiences that are reliable, clear, and welcoming.</p>
+            </section>
+            <section class="cv-section" aria-labelledby="cv-experience-heading">
+                <h2 class="cv-section-heading" id="cv-experience-heading"><span class="cv-section-index">02</span>Experience</h2>
+                <ol class="cv-timeline">
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">QA Tester <span class="cv-item-date">2025 — Present</span></h3><p class="cv-item-org">Kiwami Tech Solutions</p><p class="cv-item-description">Software quality assurance through manual and automated testing.</p></li>
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">PR Officer <span class="cv-item-date">2024 — 2025</span></h3><p class="cv-item-org">Ajira Digital Program</p><p class="cv-item-description">Communications and digital outreach.</p></li>
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">Freelance Web, Design, and QA Projects</h3><p class="cv-item-description">Project work spanning web development, interface design, and software testing.</p></li>
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">Chairperson</h3><p class="cv-item-org">Zetech Ajira Club</p></li>
+                </ol>
+            </section>
+            <section class="cv-section cv-education" aria-labelledby="cv-education-heading">
+                <h2 class="cv-section-heading" id="cv-education-heading"><span class="cv-section-index">03</span>Education</h2>
+                <ol class="cv-timeline">
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">Bachelor's in Business IT <span class="cv-item-date">2026 — Present</span></h3><p class="cv-item-org">Zetech University</p></li>
+                    <li class="cv-timeline-item"><h3 class="cv-item-heading">Diploma in Business IT <span class="cv-item-date">2024 — 2025</span></h3><p class="cv-item-org">Zetech University</p></li>
+                </ol>
+            </section>
+            <footer class="cv-footer">Antoney Ouko · Nairobi, Kenya</footer>
+        </div>
+    </main>
+</body>
+</html>

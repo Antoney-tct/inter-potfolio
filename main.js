@@ -44,14 +44,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('navClose');
 
     if (menuToggle && navMenu && navClose) {
+        const setMenuOpen = (isOpen) => {
+            navMenu.classList.toggle('active', isOpen);
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        };
+
         menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            const isOpen = !navMenu.classList.contains('active');
+            setMenuOpen(isOpen);
+            if (isOpen) navMenu.querySelector('a')?.focus();
         });
 
         navClose.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
+            setMenuOpen(false);
+            menuToggle.focus();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                setMenuOpen(false);
+                menuToggle.focus();
+            }
         });
 
         // Close menu when clicking outside
@@ -59,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navMenu.classList.contains('active') &&
                 !navMenu.contains(e.target) &&
                 !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
+                setMenuOpen(false);
             }
         });
     }
@@ -90,7 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 target.scrollIntoView({ behavior: 'smooth' });
                 if (navMenu && navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
-                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (menuToggle) {
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+                    }
                 }
             }
         });
@@ -126,6 +144,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 9. Testimonial Carousel Initialization
     initTestimonialCarousel();
+
+    // 10. Contact form status and asynchronous submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        const status = document.getElementById('contactFormStatus');
+        const submitButton = document.getElementById('contactSubmit');
+        const originalButtonContent = submitButton?.innerHTML;
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!status || !submitButton) return;
+
+            status.dataset.state = 'sending';
+            status.textContent = 'Sending your message...';
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm)
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error('Contact form submission failed');
+                }
+
+                contactForm.reset();
+                status.dataset.state = 'success';
+                status.textContent = 'Thanks for reaching out. Your message was sent successfully.';
+            } catch {
+                status.dataset.state = 'error';
+                status.textContent = 'Your message could not be sent right now. Please try again or use the direct email link below.';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonContent;
+            }
+        });
+    }
 });
 
 /**
@@ -179,7 +237,7 @@ function initChatbot() {
             "He's located in Nairobi, Kenya, but the beauty of digital work means he can collaborate on projects globally!"
         ],
         education: [
-            "He holds a Diploma in Business IT from Zetech University and has certifications in Cisco Networking and Cybersecurity. He's a big believer in lifelong learning.",
+            "He holds a Diploma in Business IT from Zetech University and currently doing Bachelors in Business Information Technology and  has certifications in Cisco Networking and Cybersecurity. He's a big believer in lifelong learning.",
             "His formal education is a Diploma in Business IT, but he's also certified in Cisco Networking and constantly learning new skills to stay sharp."
         ],
         tools: [
@@ -191,12 +249,12 @@ function initChatbot() {
             "Absolutely! He's active on LinkedIn for professional stuff and GitHub for code. You can find the links in the footer."
         ],
         joke: [
-            "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+            "Why do programmers prefer dark mode? Because light attracts bugs! 🐛 🤣",
             "I told my computer I needed a break, and now it won’t stop sending me Kit-Kat ads.",
             "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings."
         ],
         how_are_you: [
-            "I'm just a set of scripts, but I'm running at 100% efficiency! Thanks for asking. How can I help you?",
+            " Sorry 😂I'm just a set of scripts, but I'm running at 100% efficiency! Thanks for asking. How can I help you?",
             "I'm doing great, thanks! Ready to assist you with any questions about Antoney."
         ],
         thanks: [
@@ -210,7 +268,7 @@ function initChatbot() {
             "Bye for now! Thanks for stopping by."
         ],
         default: [
-            "That's an interesting question! I'm not equipped to answer that, but you could try asking about Antoney's 'skills', 'projects', or 'contact' info.",
+            "Thats an interesting question! I'm not equipped to answer that, but you could try asking about Antoney's 'skills', 'projects', or 'contact' info.",
             "I'm not sure I have the answer to that one. My knowledge is focused on Antoney's professional life. Maybe try asking about his 'process' or 'education'?",
             "Hmm, I'm drawing a blank. I can tell you about his 'work', 'skills', or how to 'get in touch' with him."
         ],
@@ -424,11 +482,11 @@ function renderFeaturedWork() {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'work-card';
         const tagsHtml = project.technologies.slice(0, 3)
-            .map(t => `<a href="tool.html?name=${encodeURIComponent(t)}" class="work-tag">${t}</a>`).join('');
+            .map(t => `<span class="work-tag">${t}</span>`).join('');
 
         cardDiv.innerHTML = `
             <a href="projects.html?filter=${encodeURIComponent(project.category)}" style="text-decoration: none; color: inherit; display: block;">
-                <img src="${project.image}" alt="${project.title}" class="work-image" loading="lazy">
+                <img src="${project.image || 'image/project-placeholder.svg'}" alt="${project.title} preview" class="work-image" loading="lazy" onerror="this.onerror=null;this.src='image/project-placeholder.svg'">
                 <div class="work-content">
                     <span class="work-category">${project.category}</span>
                     <h3 style="margin-bottom: 10px;">${project.title}</h3>

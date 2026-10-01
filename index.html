@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antoney Ouko · Tech-Portfolio</title>
-    <link rel="icon" href="image/photo2.jpg" type="image/jpeg">
+    <link rel="icon" href="image/favicon.svg?v=2" type="image/svg+xml">
     
     <!-- My fonts stack: serif + mono -->
     <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css"> <!-- Adobe Fonts: Freight Text & Graphik -->
@@ -19,16 +19,16 @@
 <body>
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo">Antoney</a>
-            <div class="menu-toggle" id="menuToggle" role="button" aria-label="Open navigation menu">
+            <a href="index.html" class="logo"><img src="image/Mylogo.jpg" class="logo-mark" alt=""> <span>Antoney Ouko</span></a>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navMenu" aria-expanded="false">
            <!--Hamburger-->
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <!--My navigation buttons with a harmburger on mobile view-->
             <ul class="nav-menu" id="navMenu">
-                <li class="nav-close-btn" id="navClose" role="button" aria-label="Close navigation menu"><i class="fas fa-times"></i></li>
+                <li><button class="nav-close-btn" id="navClose" type="button" aria-label="Close navigation menu"><i class="fas fa-times" aria-hidden="true"></i></button></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skill</a></li>
                 <li><a href="#services">services</a></li>
@@ -203,16 +203,16 @@
                         </div>
                     </div>
 
-                    <span class="download-link" id="downloadCV">
-                        <i class="fas fa-download"></i> download cv (text)
-                    </span>
+                    <a class="download-link" href="cv.html">
+                        <i class="fas fa-file-arrow-down"></i> view / save cv as pdf
+                    </a>
                 </div>
 <!--My Cv-->
                 <div class="hand-drawn-card">
                     <div class="cv-header">
                         <div>
-                            <div class="cv-name">antoney <span>ouko</span></div>
-                            <div style="font-family: 'Fragment Mono', monospace; font-size: 0.8rem; color: var(--clay);">business it specialist</div>
+                            <div class="cv-name">Antoney <span>Ouko</span></div>
+                            <div style="font-family: 'Fragment Mono', monospace; font-size: 0.8rem; color: var(--clay);">Business Information Technology specialist</div>
                         </div>
                         <i class="fas fa-leaf" style="font-size: 2rem; color: var(--sage);"></i>
                     </div>
@@ -225,16 +225,19 @@
 
                     <div class="cv-section" style="margin-bottom: 20px;">
                         <div class="cv-line">web development <span class="cv-badge">expert</span></div>
-                        <div class="cv-line">ui/ux design <span class="cv-badge">advanced</span></div>
-                        <div class="cv-line">qa engineering <span class="cv-badge">expert</span></div>
+                        <div class="cv-line">Data annotation <span class="cv-badge">Advancing</span></div>
+                        <div class="cv-line">ui/ux design <span class="cv-badge">Advancing</span></div>
+                        <div class="cv-line">qa engineering <span class="cv-badge">Advancing</span></div>
                         <div class="cv-line">it consulting <span class="cv-badge">advanced</span></div>
                     </div>
 
-                    <div class="cv-section">
+                    <div class="cv-section" >
                         <div class="cv-line">qa tester — kiwami tech</div>
-                        <div class="cv-line">pr officer — ajira digital</div>
+                        <div class="cv-line">PR officer — ajira digital</div>
                         <div class="cv-line">freelance — 5+ projects</div>
-                        <div class="cv-line">diploma business it — zetech</div>
+                         <div class="cv-line">Zetech Ajira Club Chairperson </div>
+                        <div class="cv-line">Diploma Business IT — zetech  <span class="cv-badge">2024 - 2025</span></div>
+                        <div class="cv-line">Bachelors of Business IT — zetech <span class="cv-badge">2026 - Present</span></div>
                     </div>
                 </div>
             </div>
@@ -266,31 +269,34 @@
                         <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
                         <div>
                             <h4 style="margin-bottom: 4px;">based in</h4>
-                            <p>nairobi, kenya</p>
+                            <p>Nairobi, Kenya</p>
                         </div>
                     </div>
                 </div>
 <!-- My message form-->
                 <div class="contact-form" id="contactFormSection">
-                    <h3 style="margin-bottom: 30px;">send a note</h3>
+                    <h3 id="contactFormTitle" style="margin-bottom: 30px;">send a note</h3>
                     <!-- With help of an API key from Web3Forms any message sent I will receive it as an email in my Gmail acount -->
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="contactFormTitle">
                         <input type="hidden" name="access_key" value="d5d1810a-840b-4969-9931-56f3bd1c6793">
+                        <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-group">
-                            <label class="form-label">your name</label>
-                            <input type="text" name="name" class="form-input" placeholder="e.g., Jane Mbogo" required>
+                            <label class="form-label" for="contactName">your name</label>
+                            <input id="contactName" type="text" name="name" class="form-input" placeholder="e.g., Jane Mbogo" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">email</label>
-                            <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
+                            <label class="form-label" for="contactEmail">email</label>
+                            <input id="contactEmail" type="email" name="email" class="form-input" placeholder="jane@example.com" autocomplete="email" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">message</label>
-                            <textarea name="message" class="form-textarea" placeholder="tell me about your project..." required></textarea>
+                            <label class="form-label" for="contactMessage">message</label>
+                            <textarea id="contactMessage" name="message" class="form-textarea" placeholder="tell me about your project..." maxlength="3000" required></textarea>
                         </div>
-                        <button type="submit" class="form-submit">
+                        <button type="submit" class="form-submit" id="contactSubmit">
                             <i class="fas fa-paper-plane"></i> send message
                         </button>
+                        <p class="form-status" id="contactFormStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+                        <p class="form-alternative">Prefer email? <a href="mailto:aouko178@gmail.com">Send a note directly.</a></p>
                     </form>
                 </div>
             </div>

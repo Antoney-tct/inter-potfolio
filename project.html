@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details · Antoney Ouko</title>
-    <link rel="icon" href="image/photo2.jpg" type="image/jpeg">
+    <link rel="icon" href="image/favicon.svg?v=2" type="image/svg+xml">
     <link rel="stylesheet" href="https://use.typekit.net/xqr0xuo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,14 +13,14 @@
 <body>
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo">antoney ouko</a>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="image/logo.svg" class="logo-mark" alt=""> <span>Antoney Ouko</span></a>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navMenu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <ul class="nav-menu" id="navMenu">
-                <li class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></li>
+                <li><button class="nav-close-btn" id="navClose" type="button" aria-label="Close navigation menu"><i class="fas fa-times" aria-hidden="true"></i></button></li>
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#skills">craft</a></li>
                 <li><a href="projects.html" style="color: var(--terracotta);">Projects</a></li>
@@ -79,6 +79,16 @@
                 const liveBtnText = project.liveBtnText || 'View Live Project';
                 const sourceBtnText = project.sourceBtnText || 'View on GitHub';
                 const sourceBtnIcon = project.sourceBtnIcon || 'fab fa-github';
+                const projectActions = [
+                    { href: project.liveLink, label: liveBtnText, icon: 'fas fa-external-link-alt', style: 'btn-primary' },
+                    { href: project.githubLink, label: sourceBtnText, icon: sourceBtnIcon, style: 'btn-secondary' }
+                ].filter(action => /^https?:\/\//i.test(action.href || ''));
+                const actionsHtml = projectActions.map(action => `
+                    <a href="${action.href}" class="btn ${action.style}" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
+                        <i class="${action.icon}"></i> ${action.label}
+                    </a>
+                `).join('');
+                const imageHtml = `<img src="${project.image || 'image/project-placeholder.svg'}" alt="${project.title} preview" class="project-main-image" onerror="this.onerror=null;this.src='image/project-placeholder.svg'">`;
 
                 const technologiesHtml = project.technologies.map(tech =>
                     `<li><i class="fas fa-check"></i> ${tech}</li>`
@@ -90,7 +100,7 @@
                         <h1 class="project-title-large">${project.title}</h1>
                     </div>
 
-                    <img src="${project.image}" alt="${project.title}" class="project-main-image">
+                    ${imageHtml}
 
                     <div class="project-body-grid">
                         <div class="project-description-block post-content-body">
@@ -102,14 +112,7 @@
                             <ul class="service-features" style="margin-bottom: 30px;">
                                 ${technologiesHtml}
                             </ul>
-                            <div style="display: flex; flex-direction: column; gap: 15px;">
-                                <a href="${project.liveLink}" class="btn btn-primary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-external-link-alt"></i> ${liveBtnText}
-                                </a>
-                                <a href="${project.githubLink}" class="btn btn-secondary" style="justify-content: center;" target="_blank" rel="noopener noreferrer">
-                                    <i class="${sourceBtnIcon}"></i> ${sourceBtnText}
-                                </a>
-                            </div>
+                            ${actionsHtml ? `<div style="display: flex; flex-direction: column; gap: 15px;">${actionsHtml}</div>` : ''}
                         </aside>
                     </div>
                 `;

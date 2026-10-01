@@ -1,6 +1,6 @@
 # Antoney Ouko - Personal Portfolio & Studio
 
-This is my personal professional, human-centered portfolio website designed for a Business IT Specialist. This project features a custom design system, a dynamic blog, and an interactive chatbot.
+This is my personal professional, human-centered portfolio website designed by Antoney a Business IT Specialist. This project features a custom design system, a dynamic blog, and an interactive chatbot.
 
 ## 🌟My site Features
 
@@ -31,6 +31,7 @@ Functional contact form using Web3Forms API.
 | File | Description |
 |------|-------------|
 | `index.html` | Main landing page (Hero, Skills, Services, Contact). |
+| `cv.html` | Print-ready CV page; use “Print / Save as PDF” to export a PDF. |
 | `blog.html` | Blog listing page displaying all entries from `blog-data.js`. |
 | `post.html` | Single post template. Renders content based on `?id=` URL parameter. |
 | `style.css` | Main stylesheet using CSS Variables for colors and typography. |
